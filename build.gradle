@@ -1,0 +1,150 @@
+plugins {
+	id "net.neoforged.gradle" version "[6.0.13,)"
+	id "wtf.gofancy.fancygradle" version "[1.1,)"
+	id "eclipse"
+	id "idea"
+	id "maven-publish"
+}
+
+repositories {
+	jcenter()
+	flatDir {
+		dirs "libs"
+	}
+	maven {
+		url = "https://maven.minecraftforge.net/"
+	}
+	maven {
+		url = "https://repo.spongepowered.org/maven/"
+	}
+	maven {
+		url = "https://maven.su5ed.dev/releases/"
+	}
+	maven {
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		url = "https://maven.covers1624.net/"
+	}
+	maven {
+		url = "https://maven.zeith.org/"
+	}
+	maven {
+		url = "https://cursemaven.com/"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+	maven {
+		url = "https://modmaven.dev/"
+	}
+}
+
+sourceSets {
+	main
+}
+
+def mcVersion = "1.12.2"
+def modName = "PackagedThaumic"
+def modId = "packagedthaumic"
+def specVersion = "1"
+def vendor = "thelm"
+
+group = "thelm.packagedthaumic"
+version = "1.0.0.0"
+
+archivesBaseName = "${modName}-${mcVersion}"
+
+java {
+	toolchain.languageVersion = JavaLanguageVersion.of(8)
+	withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = "UTF-8"
+}
+
+minecraft {
+	mappings channel: "stable", version: "39-1.12"
+	generateRunFolders = true
+	runs {
+		configureEach {
+			workingDirectory project.file("run")
+			property "forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP"
+			property "forge.logging.console.level", "debug"
+			property "mixin.env.remapRefMap", "true"
+			property "mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg"
+			environment "MC_VERSION", mcVersion
+			mods {
+				"${modId}" {
+					source sourceSets.main
+				}
+			}
+		}
+		client {
+			arg "--username=Dev"
+		}
+		server
+	}
+}
+
+fancyGradle {
+	patches {
+		resources
+		coremods
+		codeChickenLib
+		asm
+		mergetool
+	}
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:1.12.2-14.23.5.2859"
+
+	implementation fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
+	implementation fg.deobf("codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal")
+	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.690")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.690")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.690")
+	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:2.0.6.32")
+
+	implementation fg.deobf("curse.maven:packagedauto-308380:4678906")
+	implementation fg.deobf("curse.maven:applied-energistics-2-223794:2747063")
+	implementation fg.deobf("curse.maven:baubles-227083:2518667")
+	implementation fg.deobf("curse.maven:thaumcraft-223628:2629023")
+	implementation fg.deobf("curse.maven:thaumic-jei-285492:2705304")
+	implementation fg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158")
+	implementation fg.deobf("curse.maven:thaumic-augmentation-319441:4486505-sources-4486509")
+	implementation fg.deobf("curse.maven:thaumic-additions-232564:3663195")
+	implementation fg.deobf("curse.maven:redstone-flux-270789:2920436")
+	implementation fg.deobf("curse.maven:cofh-core-69162:2920433")
+	implementation fg.deobf("curse.maven:cofh-world-271384:2920434")
+	implementation fg.deobf("curse.maven:thermal-foundation-222880:2926428")
+	implementation fg.deobf("curse.maven:thermal-expansion-69163:2926431")
+	implementation fg.deobf("curse.maven:thermal-dynamics-227443:2920505")
+}
+
+configurations.all {
+	resolutionStrategy {
+		force "net.minecraftforge:legacydev:0.2.4.1"
+	}
+}
+
+def manifestAttributes = [
+	"Specification-Title": modName,
+	"Specification-Vendor": vendor,
+	"Specification-Version": specVersion,
+	"Implementation-Title": archivesBaseName,
+	"Implementation-Version": version,
+	"Implementation-Vendor": vendor,
+	"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+]
+
+jar {
+	manifest.attributes(manifestAttributes)
+	finalizedBy("reobfJar")
+}
+
+sourcesJar {
+	manifest.attributes(manifestAttributes)
+}

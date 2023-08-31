@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "side": "packagedthaumic:blocks/virial_chamber_side",
+            "end": "packagedthaumic:blocks/virial_chamber_end"
+        },
+        "model": "cube_column"
+    },
+    "variants": {
+        "normal": [{}]
+    }
+}

@@ -1,0 +1,478 @@
+{
+    "entries": [
+        {
+            "key": "PACKAGEDTHAUMIC_PACKAGING",
+            "name": "research.packagedthaumic.PACKAGING.title",
+            "icons": [
+                "packagedauto:package_component"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "f_MODPACKAGEDAUTO"
+            ],
+            "meta": [
+                "ROUND", "HIDDEN"
+            ],
+            "location": [ 0, 0 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.PACKAGING.stage.1"
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_THAUMICPACKAGECOMPONENT",
+            "name": "research.packagedthaumic.THAUMICPACKAGECOMPONENT.title",
+            "icons": [
+                "packagedthaumic:thaumic_package_component"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_PACKAGING",
+                "MINDCLOCKWORK"
+            ],
+            "location": [ 0, -2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.THAUMICPACKAGECOMPONENT.stage.1",
+                    "required_item": [
+                        "packagedauto:package_component",
+                        "thaumcraft:mechanism_simple",
+                        "thaumcraft:amber"
+                    ],
+                    "required_knowledge": [
+                        "OBSERVATION;PACKAGEDTHAUMIC;1",
+                        "THEORY;PACKAGEDTHAUMIC;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.THAUMICPACKAGECOMPONENT.stage.2",
+                    "recipes": [
+                        "packagedthaumic:thaumic_package_component"
+                    ]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.THAUMICPACKAGECOMPONENT.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_REINFORCEDPOROUSSTONE",
+            "name": "research.packagedthaumic.REINFORCEDPOROUSSTONE.title",
+            "icons": [
+                "packagedthaumic:reinforced_porous_stone"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_PACKAGING",
+                "~!TaintSeed",
+                "BASEALCHEMY"
+            ],
+            "location": [ 0, 2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.1",
+                    "required_item": [
+                        "thaumcraft:taint_soil",
+                        "thaumcraft:taint_rock",
+                        "thaumcraft:taint_log"
+                    ],
+                    "required_knowledge": [
+                        "OBSERVATION;BASICS;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.2",
+                    "required_item": [
+                        "thaumcraft:stone_porous"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;ALCHEMY;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.3",
+                    "recipes": [
+                        "packagedthaumic:reinforced_porous_stone"
+                    ],
+                    "required_craft": [
+                        "packagedthaumic:reinforced_porous_stone"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.4",
+                    "recipes": [
+                        "packagedthaumic:reinforced_porous_stone"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_POROUSSTONEPLATE",
+            "name": "research.packagedthaumic.POROUSSTONEPLATE.title",
+            "icons": [
+                "packagedthaumic:porous_stone_plate"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_REINFORCEDPOROUSSTONE",
+                "TUBES"
+            ],
+            "location": [ 0, 4 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.POROUSSTONEPLATE.stage.1",
+                    "required_item": [
+                        "packagedthaumic:reinforced_porous_stone"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;ALCHEMY;1",
+                        "OBSERVATION;AUROMANCY;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.POROUSSTONEPLATE.stage.2",
+                    "recipes": [
+                        "packagedthaumic:porous_stone_plate"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_CLATHRATEESSENCEFORMER",
+            "name": "research.packagedthaumic.CLATHRATEESSENCEFORMER.title",
+            "icons": [
+                "packagedthaumic:clathrate_essence_former"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_THAUMICPACKAGECOMPONENT",
+                "PACKAGEDTHAUMIC_POROUSSTONEPLATE",
+                "EVERFULLURN",
+                "INFUSION"
+            ],
+            "location": [ 2, 0 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.CLATHRATEESSENCEFORMER.stage.1",
+                    "required_item": [
+                        "minecraft:packed_ice",
+                        "thaumcraft:phial;2;1"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;1",
+                        "THEORY;ALCHEMY;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.CLATHRATEESSENCEFORMER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:clathrate_essence_former"
+                    ]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.CLATHRATEESSENCEFORMER.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_VIRIALCHAMBER",
+            "name": "research.packagedthaumic.VIRIALCHAMBER.title",
+            "icons": [
+                "packagedthaumic:virial_chamber"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_POROUSSTONEPLATE",
+                "UNLOCKELDRITCH",
+                "MIRROR"
+            ],
+            "location": [ -2, 2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.VIRIALCHAMBER.stage.1",
+                    "required_item": [
+                        "packagedthaumic:reinforced_porous_stone",
+                        "thaumcraft:mirrored_glass",
+                        "oredict:nitor"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;AUROMANCY;2",
+                        "OBSERVATION;PACKAGEDTHAUMIC;1",
+                        "OBSERVATION;ARTIFICE;1",
+                        "OBSERVATION;ELDRITCH;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.VIRIALCHAMBER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:virial_chamber"
+                    ],
+                    "warp": 1
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_ARCANECRAFTER",
+            "name": "research.packagedthaumic.ARCANECRAFTER.title",
+            "icons": [
+                "packagedthaumic:arcane_crafter"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_THAUMICPACKAGECOMPONENT",
+                "WORKBENCHCHARGER",
+                "INFUSION"
+            ],
+            "location": [ -2, -2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.ARCANECRAFTER.stage.1",
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;1",
+                        "THEORY;AUROMANCY;1",
+                        "OBSERVATION;BASICS;1",
+                        "OBSERVATION;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.ARCANECRAFTER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:arcane_crafter"
+                    ]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.ARCANECRAFTER.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_VIRIALARCANECRAFTER",
+            "name": "research.packagedthaumic.VIRIALARCANECRAFTER.title",
+            "icons": [
+                "packagedthaumic:virial_arcane_crafter"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_ARCANECRAFTER",
+                "PACKAGEDTHAUMIC_VIRIALCHAMBER"
+            ],
+            "meta": [
+                "SPIKY", "REVERSE"
+            ],
+            "location": [ -4, 0 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.VIRIALARCANECRAFTER.stage.1",
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;2",
+                        "THEORY;AUROMANCY;1",
+                        "THEORY;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.VIRIALARCANECRAFTER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:virial_arcane_crafter"
+                    ]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.VIRIALARCANECRAFTER.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_VIRIALRECHARGEPEDESTAL",
+            "name": "research.packagedthaumic.VIRIALRECHARGEPEDESTAL.title",
+            "icons": [
+                "packagedthaumic:virial_recharge_pedestal"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_VIRIALCHAMBER",
+                "RECHARGEPEDESTAL"
+            ],
+            "location": [ -4, 2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.VIRIALRECHARGEPEDESTAL.stage.1",
+                    "required_knowledge": [
+                        "THEORY;AUROMANCY;1",
+                        "THEORY;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.VIRIALRECHARGEPEDESTAL.stage.2",
+                    "recipes": [
+                        "packagedthaumic:virial_recharge_pedestal"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_CRUCIBLECRAFTER",
+            "name": "research.packagedthaumic.CRUCIBLECRAFTER.title",
+            "icons": [
+                "packagedthaumic:crucible_crafter"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_CLATHRATEESSENCEFORMER",
+                "THAUMATORIUM"
+            ],
+            "location": [ 4, -2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.CRUCIBLECRAFTER.stage.1",
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;1",
+                        "THEORY;ALCHEMY;1",
+                        "OBSERVATION;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.CRUCIBLECRAFTER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:crucible_crafter",
+                        "packagedthaumic:crucible_crafter_structure"
+                    ]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.CRUCIBLECRAFTER.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_INFUSIONCRAFTER",
+            "name": "research.packagedthaumic.INFUSIONCRAFTER.title",
+            "icons": [
+                "packagedthaumic:infusion_crafter"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_CLATHRATEESSENCEFORMER",
+                "~INFUSIONSTABLE",
+                "MINDBIOTHAUMIC",
+                "MIRROR",
+                "ESSENTIASMELTERVOID"
+            ],
+            "meta": [
+                "SPIKY"
+            ],
+            "location": [ 4, 2 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTER.stage.1",
+                    "required_item": [
+                        "thaumcraft:inlay",
+                        "thaumcraft:brain"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;2",
+                        "THEORY;INFUSION;2",
+                        "OBSERVATION;ALCHEMY;1",
+                        "OBSERVATION;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:infusion_crafter",
+                        "packagedthaumic:infusion_crafter_altar",
+                        "packagedthaumic:marked_arcane_pedestal"
+                    ],
+                    "warp": 3
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTER.addendum.boost",
+                    "required_research": [
+                        "INFUSIONBOOST"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTER.addendum.ae",
+                    "required_research": [
+                        "f_MODAPPLIEDENERGISTICS2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_INFUSIONCRAFTERANCIENT",
+            "name": "research.packagedthaumic.INFUSIONCRAFTERANCIENT.title",
+            "icons": [
+                "packagedthaumic:marked_ancient_pedestal"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_INFUSIONCRAFTER",
+                "INFUSIONANCIENT"
+            ],
+            "meta": [
+                "ROUND"
+            ],
+            "location": [ 5, 4 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTERANCIENT.stage.1",
+                    "recipes": [
+                        "packagedthaumic:infusion_crafter_altar_ancient",
+                        "packagedthaumic:marked_ancient_pedestal"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "PACKAGEDTHAUMIC_INFUSIONCRAFTERELDRITCH",
+            "name": "research.packagedthaumic.INFUSIONCRAFTERELDRITCH.title",
+            "icons": [
+                "packagedthaumic:marked_eldritch_pedestal"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_INFUSIONCRAFTER",
+                "INFUSIONELDRITCH"
+            ],
+            "meta": [
+                "ROUND"
+            ],
+            "location": [ 3, 4 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.INFUSIONCRAFTERELDRITCH.stage.1",
+                    "recipes": [
+                        "packagedthaumic:infusion_crafter_altar_eldritch",
+                        "packagedthaumic:marked_eldritch_pedestal"
+                    ]
+                }
+            ]
+        }
+    ]
+}

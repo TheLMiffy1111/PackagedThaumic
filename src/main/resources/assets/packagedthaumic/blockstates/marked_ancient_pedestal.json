@@ -1,0 +1,9 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "packagedthaumic:marked_ancient_pedestal"
+    },
+    "variants": {
+        "normal": [{}]
+    }
+}

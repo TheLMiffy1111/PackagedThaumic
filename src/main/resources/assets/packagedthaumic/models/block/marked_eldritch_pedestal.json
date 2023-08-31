@@ -1,0 +1,44 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"particle": "packagedthaumic:blocks/marked_eldritch_pedestal_side",
+		"side": "packagedthaumic:blocks/marked_eldritch_pedestal_side",
+		"top": "packagedthaumic:blocks/marked_eldritch_pedestal_top"
+	},
+	"elements": [
+		{
+			"from": [ 0, 0, 0 ],
+			"to": [ 16, 4, 16 ],
+			"faces": {
+				"north": { "uv": [ 0, 12, 16, 16 ], "texture": "#side", "cullface": "north" },
+				"east": { "uv": [ 0, 12, 16, 16 ], "texture": "#side", "cullface": "east" },
+				"south": { "uv": [ 0, 12, 16, 16 ], "texture": "#side", "cullface": "south" },
+				"west": { "uv": [ 0, 12, 16, 16 ], "texture": "#side", "cullface": "west" },
+				"up": { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+				"down": { "uv": [ 0, 0, 16, 16 ], "texture": "#top", "cullface": "down" }
+			}
+		},
+		{
+			"from": [ 2, 4, 2 ],
+			"to": [ 14, 8, 14 ],
+			"faces": {
+				"north": { "uv": [ 2, 8, 14, 12 ], "texture": "#side" },
+				"east": { "uv": [ 2, 8, 14, 12 ], "texture": "#side" },
+				"south": { "uv": [ 2, 8, 14, 12 ], "texture": "#side" },
+				"west": { "uv": [ 2, 8, 14, 12 ], "texture": "#side" },
+				"up": { "uv": [ 2, 2, 14, 14 ], "texture": "#top" }
+			}
+		},
+		{
+			"from": [ 4, 8, 4 ],
+			"to": [ 12, 12, 12 ],
+			"faces": {
+				"north": { "uv": [ 4, 4, 12, 8 ], "texture": "#side" },
+				"east": { "uv": [ 4, 4, 12, 8 ], "texture": "#side" },
+				"south": { "uv": [ 4, 4, 12, 8 ], "texture": "#side" },
+				"west": { "uv": [ 4, 4, 12, 8 ], "texture": "#side" },
+				"up": { "uv": [ 4, 4, 12, 12 ], "texture": "#top" }
+			}
+		}
+	]
+}

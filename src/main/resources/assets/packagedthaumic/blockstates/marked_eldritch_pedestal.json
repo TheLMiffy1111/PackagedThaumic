@@ -1,0 +1,9 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "packagedthaumic:marked_eldritch_pedestal"
+    },
+    "variants": {
+        "normal": [{}]
+    }
+}
