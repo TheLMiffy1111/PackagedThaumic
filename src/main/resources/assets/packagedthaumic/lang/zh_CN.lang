@@ -51,21 +51,21 @@ research.packagedthaumic.THAUMICPACKAGECOMPONENT.addendum.ae=我在这里使用�
 research.packagedthaumic.REINFORCEDPOROUSSTONE.title=腐化残留物研究
 research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.1=在没有“种子”作为核心的情况下，生长物会腐化。<BR>我应该等待腐化蔓延，用精准采集收集一些腐化生长物，并研究它们的腐化结果。
 research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.2=受污染的有机材料会腐烂成腐化粘浆，受污染的土壤会腐化成泥土。<BR>然而，受污染的石头腐化很有趣。受污染的石头不会腐烂成圆石或砂砾，而是腐烂成透水石。<BR>我应该通过让受污染的石头自然腐化来获得这种透水石的另一个样本，并研究其特性，因为它可能有用。
-research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.3=石头的透水性似乎是由腐化凝结成各种类型的晶体造成的。<BR>这应该使它成为绝缘要素的绝佳材料。<BR>这种透水石现在太脆弱了，无法使用，但我应该能够强化它。
-research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.4=通过在透水石中添加一些要素，我成功地强化了它以供使用。<BR>透水石似乎还吸收了少量灵气中的 Vis 和咒波。
+research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.3=石头的透水性似乎是由腐化凝结成各种类型的晶体造成的。<BR>这应该使它成为绝缘源质的绝佳材料。<BR>这种透水石现在太脆弱了，无法使用，但我应该能够强化它。
+research.packagedthaumic.REINFORCEDPOROUSSTONE.stage.4=通过在透水石中添加一些源质，我成功地强化了它以供使用。<BR>透水石似乎还吸收了少量灵气中的 Vis 和咒波。
 
 research.packagedthaumic.POROUSSTONEPLATE.title=透水石板
 research.packagedthaumic.POROUSSTONEPLATE.stage.1=仅仅强化透水石不足以使其用于设备和机器。<BR>我应该研究一块强化透水石来研究如何正确利用它。
-research.packagedthaumic.POROUSSTONEPLATE.stage.2=通过在透水石上添加一层管道，我应该能够让透水石以受控的方式分散吸收的要素，让其可以在装置和机器中使用。
+research.packagedthaumic.POROUSSTONEPLATE.stage.2=通过在透水石上添加一层管道，我应该能够让透水石以受控的方式分散吸收的源质，让其可以在装置和机器中使用。
 
 research.packagedthaumic.CLATHRATEESSENCEFORMER.title=源质水合物
-research.packagedthaumic.CLATHRATEESSENCEFORMER.stage.1=封包要求封包组件中全部是物品，所以我必须使用物品形式的要素。<BR>虽然封包有制作“批量包装”这样的场景的能力，但是现在时代的机器好像无法利用这一点。<BR>我可以使用源质水晶，但制造它们的方法需要石英，效率很低。<BR>我也许可以用冰替换石英以产生源质水合物。我应该用坚冰和一些要素来尝试。
+research.packagedthaumic.CLATHRATEESSENCEFORMER.stage.1=封包要求封包组件中全部是物品，所以我必须使用物品形式的源质。<BR>虽然封包有制作“批量包装”这样的场景的能力，但是现在时代的机器好像无法利用这一点。<BR>我可以使用源质水晶，但制造它们的方法需要石英，效率很低。<BR>我也许可以用冰替换石英以产生源质水合物。我应该用坚冰和一些源质来尝试。
 research.packagedthaumic.CLATHRATEESSENCEFORMER.stage.2=我设计了一台机器，可以用源质水形成源质水合物。<BR>水由无尽之瓮提供，将通过管道提供的源质溶解在水中。<BR>然后这台机器利用能量和一定体积的包装能力将水冻结，形成源质水合物。<BR>每个源质水合物只需要一个单位的源质。
 research.packagedthaumic.CLATHRATEESSENCEFORMER.addendum.ae=如果源质水合物形成器已被连接到 ME 系统，它可以从 ME 系统吸收能量并自动将形成的源质水合物存入系统中。
 
 research.packagedthaumic.VIRIALCHAMBER.title=自魔匣
 research.packagedthaumic.VIRIALCHAMBER.stage.1=在学习邪术知识时，我瞥见了过去。<BR>在过去的时代，神秘使从灵气节点获得 Vis。他们用能量束提供能量，创造稳定的 Vis 光束来为他们的设备和机器提供动力。<BR>这种使用 Vis 的方式不用担心耗尽。遗憾的是，这些光环节点已经不复存在了，而且很长一段时间都不会再出现。<BR>不过，我或许可以人工制造出类似于充能灵气节点的东西。<BR>使用透水石应该可以创建一个几乎没有灵气的小区域，并使用镜中奇缘让少量光环通过。<BR>这应该会创建一个虚拟的灵气节点，然后可以用能量发射它以产生更多 Vis。<BR>我应该进一步研究这个。
-research.packagedthaumic.VIRIALCHAMBER.stage.2=我已经成功设计了包含“充能虚拟灵气节点”的装置，我将其称为“自魔匣”，因为它会产生 Vis。<BR>它可以通过将能量射入虚拟光环节点来转换正常能量为 Vis。<BR>但是，这个创建的 Vis 与灵气不兼容，因为它以某种方式含有要素，导致创建的 Vis 几乎完全变成咒波。<BR>因此我需要立即使用这些 Vis，这限制了该设备为其他通常从灵气中使用 Vis 的设备和机器所用。
+research.packagedthaumic.VIRIALCHAMBER.stage.2=我已经成功设计了包含“充能虚拟灵气节点”的装置，我将其称为“自魔匣”，因为它会产生 Vis。<BR>它可以通过将能量射入虚拟光环节点来转换正常能量为 Vis。<BR>但是，这个创建的 Vis 与灵气不兼容，因为它以某种方式含有源质，导致创建的 Vis 几乎完全变成咒波。<BR>因此我需要立即使用这些 Vis，这限制了该设备为其他通常从灵气中使用 Vis 的设备和机器所用。
 
 research.packagedthaumic.ARCANECRAFTER.title=封包奥术合成
 research.packagedthaumic.ARCANECRAFTER.stage.1=我应该能够设计一个基础的封包合成器，使用灵气中的 Vis 制作奥术配方。<BR>在设计时，我还应该将奥术工作台充能器与合成器结合起来使用以提供更广的灵气使用范围。
@@ -83,13 +83,13 @@ research.packagedthaumic.VIRIALRECHARGEPEDESTAL.stage.2=我设计了自魔充能
 
 research.packagedthaumic.CRUCIBLECRAFTER.title=封包炼金
 research.packagedthaumic.CRUCIBLECRAFTER.stage.1=我应该能够设计一个基于神秘炼金塔的封包合成器，它使用源质水合物制作坩埚配方。
-research.packagedthaumic.CRUCIBLECRAFTER.stage.2=我设计了封包神秘炼金塔。<BR>它的大小是神秘炼金塔的一半，但仍然需要坩埚和热源才能工作。<BR>它可以自动制作封包中我目前中知道的坩埚配方。<BR>如果我学到更多坩埚配方，我可以与它交互以更新它的知识。<BR>合成时间取决于所需的要素量，而所需的总时间大约是神秘炼金塔的一半。
+research.packagedthaumic.CRUCIBLECRAFTER.stage.2=我设计了封包神秘炼金塔。<BR>它的大小是神秘炼金塔的一半，但仍然需要坩埚和热源才能工作。<BR>它可以自动制作封包中我目前中知道的坩埚配方。<BR>如果我学到更多坩埚配方，我可以与它交互以更新它的知识。<BR>合成时间取决于所需的源质量，而所需的总时间大约是神秘炼金塔的一半。
 research.packagedthaumic.CRUCIBLECRAFTER.addendum.ae=如果封包神秘炼金塔已被连接到 ME 系统，它可以从 ME 系统吸收能量并自动将合成物品存入系统中。
 
 research.packagedthaumic.INFUSIONCRAFTER.title=封包注魔
-research.packagedthaumic.INFUSIONCRAFTER.stage.1=我现在应该尝试设计一个封包合成器，使注魔祭坛自动化，并使用要素水合物制作注魔配方。<BR>我希望合成器尽可能可靠，而我关于稳定器和神秘生物学之心的研究应该会有所帮助。
-research.packagedthaumic.INFUSIONCRAFTER.stage.2=我设计了封包符文矩阵，它可以用来形成封包注魔祭坛。<BR>它可以自动制作封包中我目前中知道的注魔配方。<BR>如果我学到更多注魔配方，我可以与它交互以更新它的知识。<BR>需要经过标记和稳定的特殊基座。<BR>除非合成器认为周围环境足够稳定，否则不会启动合成。<BR>如果在任何时候注入过程变得不稳定，它将会使用其内部的稳定器来阻止物品被破坏。<BR>合成时间取决于所需的要素数量和材料的量，所需的总时间应与常规注魔相同。
-research.packagedthaumic.INFUSIONCRAFTER.addendum.boost=在封包注魔祭坛中，注魔加速的工作方式略有不同。<BR>速度修改器会修改要素和物品制作时间。<BR>成本修改器无法改变要素使用量，因此它们会修改要素合成时间。
+research.packagedthaumic.INFUSIONCRAFTER.stage.1=我现在应该尝试设计一个封包合成器，使注魔祭坛自动化，并使用源质水合物制作注魔配方。<BR>我希望合成器尽可能可靠，而我关于稳定器和神秘生物学之心的研究应该会有所帮助。
+research.packagedthaumic.INFUSIONCRAFTER.stage.2=我设计了封包符文矩阵，它可以用来形成封包注魔祭坛。<BR>它可以自动制作封包中我目前中知道的注魔配方。<BR>如果我学到更多注魔配方，我可以与它交互以更新它的知识。<BR>需要经过标记和稳定的特殊基座。<BR>除非合成器认为周围环境足够稳定，否则不会启动合成。<BR>如果在任何时候注入过程变得不稳定，它将会使用其内部的稳定器来阻止物品被破坏。<BR>合成时间取决于所需的源质数量和材料的量，所需的总时间应与常规注魔相同。
+research.packagedthaumic.INFUSIONCRAFTER.addendum.boost=在封包注魔祭坛中，注魔加速的工作方式略有不同。<BR>速度修改器会修改源质和物品制作时间。<BR>成本修改器无法改变源质使用量，因此它们会修改源质合成时间。
 research.packagedthaumic.INFUSIONCRAFTER.addendum.ae=如果封包符文矩阵已被连接到 ME 系统，它可以从 ME 系统吸收能量并自动将合成物品存入系统中。
 
 research.packagedthaumic.INFUSIONCRAFTERANCIENT.title=封包注魔：荒古石
