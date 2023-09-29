@@ -1,11 +1,14 @@
 package thelm.packagedthaumic.config;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import thelm.packagedthaumic.integration.thaumicenergistics.tile.TileClathrateEssenceMaterializer;
 import thelm.packagedthaumic.tile.TileArcaneCrafter;
 import thelm.packagedthaumic.tile.TileClathrateEssenceFormer;
 import thelm.packagedthaumic.tile.TileCrucibleCrafter;
@@ -63,6 +66,13 @@ public class PackagedThaumicConfig {
 		TileVirialRechargePedestal.energyPerVis = config.get(category, "energy_per_vis", TileVirialRechargePedestal.energyPerVis, "How much FE the Virial Recharge Pedestal should use per vis.", 1000, Integer.MAX_VALUE).getInt();
 		TileVirialRechargePedestal.tickInterval = config.get(category, "tick_interval", TileVirialRechargePedestal.tickInterval, "How many ticks the Virial Recharge Pedestal should take per operation.", 0, Integer.MAX_VALUE).getInt();
 		TileVirialRechargePedestal.fluxLeakageChance = config.get(category, "flux_leakage_chance", TileVirialRechargePedestal.fluxLeakageChance, "The base chance per vis that the Virial Recharge Pedestal leaks flux.", 0, 1).getDouble();
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			Supplier<Runnable> r = ()->()->{
+				String category2 = "blocks.clathrate_essence_materializer";
+				TileClathrateEssenceMaterializer.energyUsage = config.get(category2, "energy_usage", TileClathrateEssenceMaterializer.energyUsage, "How much FE the Essentia Clathrate Former should use per operation.", 0, Integer.MAX_VALUE).getInt();
+			};
+			r.get().run();
+		}
 		if(config.hasChanged()) {
 			config.save();
 		}

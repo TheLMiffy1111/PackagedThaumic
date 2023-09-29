@@ -3,6 +3,7 @@ package thelm.packagedthaumic.integration.appeng.networking;
 import appeng.api.AEApi;
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
+import appeng.api.config.PowerUnits;
 import appeng.api.networking.GridFlags;
 import appeng.api.networking.IGrid;
 import appeng.api.networking.energy.IEnergyGrid;
@@ -22,49 +23,40 @@ public class HostHelperTileArcaneCrafter extends HostHelperTile<TileArcaneCrafte
 	}
 
 	public void ejectItem() {
-		IGrid grid = getNode().getGrid();
-		if(grid == null) {
-			return;
-		}
-		IStorageGrid storageGrid = grid.getCache(IStorageGrid.class);
-		if(storageGrid == null) {
-			return;
-		}
-		IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
-		if(energyGrid == null) {
-			return;
-		}
-		IItemStorageChannel storageChannel = AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class);
-		IMEMonitor<IAEItemStack> inventory = storageGrid.getInventory(storageChannel);
-		int endIndex = tile.isWorking ? 15 : 0;
-		for(int i = 15; i >= endIndex; --i) {
-			ItemStack is = tile.getInventory().getStackInSlot(i);
-			if(is.isEmpty()) {
-				continue;
-			}
-			IAEItemStack stack = storageChannel.createStack(is);
-			IAEItemStack rem = AEApi.instance().storage().poweredInsert(energyGrid, inventory, stack, source, Actionable.MODULATE);
-			if(rem == null || rem.getStackSize() == 0) {
-				tile.getInventory().setInventorySlotContents(i, ItemStack.EMPTY);
-			}
-			else if(rem.getStackSize() < stack.getStackSize()) {
-				tile.getInventory().setInventorySlotContents(i, rem.createItemStack());
+		if(isActive()) {
+			IGrid grid = getNode().getGrid();
+			IStorageGrid storageGrid = grid.getCache(IStorageGrid.class);
+			IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
+			IItemStorageChannel storageChannel = AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class);
+			IMEMonitor<IAEItemStack> inventory = storageGrid.getInventory(storageChannel);
+			int endIndex = tile.isWorking ? 15 : 0;
+			for(int i = 15; i >= endIndex; --i) {
+				ItemStack is = tile.getInventory().getStackInSlot(i);
+				if(is.isEmpty()) {
+					continue;
+				}
+				IAEItemStack stack = storageChannel.createStack(is);
+				IAEItemStack rem = AEApi.instance().storage().poweredInsert(energyGrid, inventory, stack, source, Actionable.MODULATE);
+				if(rem == null || rem.getStackSize() == 0) {
+					tile.getInventory().setInventorySlotContents(i, ItemStack.EMPTY);
+				}
+				else if(rem.getStackSize() < stack.getStackSize()) {
+					tile.getInventory().setInventorySlotContents(i, rem.createItemStack());
+				}
 			}
 		}
 	}
 
 	public void chargeEnergy() {
-		IGrid grid = getNode().getGrid();
-		if(grid == null) {
-			return;
+		if(isActive()) {
+			IGrid grid = getNode().getGrid();
+			IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
+			double conversion = PowerUnits.RF.convertTo(PowerUnits.AE, 1);
+			int request = Math.min(tile.getEnergyStorage().getMaxReceive(), tile.getEnergyStorage().getMaxEnergyStored()-tile.getEnergyStorage().getEnergyStored());
+			double available = energyGrid.extractAEPower((request+0.5)*conversion, Actionable.SIMULATE, PowerMultiplier.CONFIG);
+			int extract = (int)(available/conversion);
+			energyGrid.extractAEPower(extract*conversion, Actionable.MODULATE, PowerMultiplier.CONFIG);
+			tile.getEnergyStorage().receiveEnergy(extract, false);
 		}
-		IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
-		if(energyGrid == null) {
-			return;
-		}
-		double energyRequest = Math.min(tile.getEnergyStorage().getMaxReceive(), tile.getEnergyStorage().getMaxEnergyStored() - tile.getEnergyStorage().getEnergyStored()) / 2D;
-		double canExtract = energyGrid.extractAEPower(energyRequest, Actionable.SIMULATE, PowerMultiplier.CONFIG);
-		double extract = Math.round(canExtract*2) / 2D;
-		tile.getEnergyStorage().receiveEnergy((int)Math.round(energyGrid.extractAEPower(extract, Actionable.MODULATE, PowerMultiplier.CONFIG)*2), false);
 	}
 }

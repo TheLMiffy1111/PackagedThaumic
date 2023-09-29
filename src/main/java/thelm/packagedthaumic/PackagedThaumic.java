@@ -26,7 +26,7 @@ public class PackagedThaumic {
 
 	public static final String MOD_ID = "packagedthaumic";
 	public static final String NAME = "PackagedThaumic";
-	public static final String VERSION = "1.12.2-1.0.0.0";
+	public static final String VERSION = "1.12.2-1.0.1.1";
 	public static final String DEPENDENCIES = "required-after:packagedauto@[1.12.2-1.0.8,);required-after:thaumcraft;";
 	public static final String GUI_FACTORY = "thelm.packagedthaumic.client.gui.GuiPackagedThaumicConfigFactory";
 	public static final CreativeTabs CREATIVE_TAB = new CreativeTabs("packagedthaumic") {

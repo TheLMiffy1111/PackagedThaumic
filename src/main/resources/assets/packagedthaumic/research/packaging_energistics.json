@@ -1,0 +1,43 @@
+{
+    "entries": [
+        {
+            "key": "PACKAGEDTHAUMIC_CLATHRATEESSENCEMATERIALIZER",
+            "name": "research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.title",
+            "icons": [
+                "packagedthaumic:clathrate_essence_materializer"
+            ],
+            "category": "PACKAGEDTHAUMIC",
+            "parents": [
+                "PACKAGEDTHAUMIC_CLATHRATEESSENCEFORMER",
+                "DIGISENTIA"
+            ],
+            "meta": [
+                "HIDDEN"
+            ],
+            "location": [ 6, 0 ],
+            "stages": [
+                {
+                    "text": "research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.stage.1",
+                    "required_item": [
+                        "thaumcraft:phial;4;1",
+                        "packagedthaumic:clathrate_essence;32",
+                        "thaumicenergistics:coalescence_core",
+                        "appliedenergistics2:fluix_block"
+                    ],
+                    "required_knowledge": [
+                        "THEORY;PACKAGEDTHAUMIC;1",
+                        "THEORY;THAUMICENERGISTICS;1",
+                        "THEORY;ALCHEMY;1",
+                        "THEORY;ARTIFICE;1"
+                    ]
+                },
+                {
+                    "text": "research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.stage.2",
+                    "recipes": [
+                        "packagedthaumic:clathrate_essence_materializer"
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,5 +1,7 @@
 package thelm.packagedthaumic.proxy;
 
+import java.util.function.Supplier;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -38,6 +40,8 @@ import thelm.packagedthaumic.block.BlockVirialArcaneCrafter;
 import thelm.packagedthaumic.block.BlockVirialChamber;
 import thelm.packagedthaumic.block.BlockVirialRechargePedestal;
 import thelm.packagedthaumic.config.PackagedThaumicConfig;
+import thelm.packagedthaumic.integration.thaumicenergistics.block.BlockClathrateEssenceMaterializer;
+import thelm.packagedthaumic.integration.thaumicenergistics.tile.TileClathrateEssenceMaterializer;
 import thelm.packagedthaumic.item.ItemClathrateEssence;
 import thelm.packagedthaumic.item.ItemMisc;
 import thelm.packagedthaumic.network.PacketHandler;
@@ -98,6 +102,12 @@ public class CommonProxy {
 		registerBlock(BlockMarkedPedestal.ANCIENT);
 		registerBlock(BlockMarkedPedestal.ELDRITCH);
 		registerBlock(BlockVirialRechargePedestal.INSTANCE);
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			Supplier<Runnable> r = ()->()->{
+				registerBlock(BlockClathrateEssenceMaterializer.INSTANCE);
+			};
+			r.get().run();
+		}
 	}
 
 	protected void registerItems() {
@@ -112,6 +122,13 @@ public class CommonProxy {
 		registerItem(BlockMarkedPedestal.ANCIENT_ITEM);
 		registerItem(BlockMarkedPedestal.ELDRITCH_ITEM);
 		registerItem(BlockVirialRechargePedestal.ITEM_INSTANCE);
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			Supplier<Runnable> r = ()->()->{
+				registerItem(BlockClathrateEssenceMaterializer.ITEM_INSTANCE);
+			};
+			r.get().run();
+		}
+
 		registerItem(ItemMisc.THAUMIC_PACKAGE_COMPONENT);
 		registerItem(ItemMisc.POROUS_STONE_PLATE);
 		registerItem(ItemClathrateEssence.INSTANCE);
@@ -127,6 +144,12 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileInfusionCrafter.class, new ResourceLocation("packagedthaumic:infusion_crafter"));
 		GameRegistry.registerTileEntity(TileMarkedPedestal.class, new ResourceLocation("packagedthaumic:marked_pedestal"));
 		GameRegistry.registerTileEntity(TileVirialRechargePedestal.class, new ResourceLocation("packagedthaumic:virial_recharge_pedestal"));
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			Supplier<Runnable> r = ()->()->{
+				GameRegistry.registerTileEntity(TileClathrateEssenceMaterializer.class, new ResourceLocation("packagedthaumic:clathrate_essence_materializer"));
+			};
+			r.get().run();
+		}
 	}
 
 	protected void registerRecipeTypes() {
@@ -159,6 +182,9 @@ public class CommonProxy {
 		ScanningManager.addScannableThing(new ScanMod("f_MODPACKAGEDAUTO", "packagedauto"));
 		ScanningManager.addScannableThing(new ScanMod("f_MODAPPLIEDENERGISTICS2", "appliedenergistics2"));
 		ThaumcraftApi.registerResearchLocation(new ResourceLocation("packagedthaumic:research/packaging"));
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			ThaumcraftApi.registerResearchLocation(new ResourceLocation("packagedthaumic:research/packaging_energistics"));
+		}
 	}
 
 	protected void registerRecipes() {
@@ -518,5 +544,35 @@ public class CommonProxy {
 								new ItemStack(BlocksTC.stoneEldritchTile, 8),
 								new ItemStack(BlockInfusionCrafter.INSTANCE),
 						}));
+		if(Loader.isModLoaded("thaumicenergistics")) {
+			Supplier<Runnable> r = ()->()->{
+				Item coalescenceCore = ForgeRegistries.ITEMS.getValue(new ResourceLocation("thaumicenergistics:coalescence_core"));
+				Item fluixBlock = ForgeRegistries.ITEMS.getValue(new ResourceLocation("appliedenergistics2:fluix_block"));
+				ThaumcraftApi.addInfusionCraftingRecipe(
+						new ResourceLocation("packagedthaumic:clathrate_essence_materializer"),
+						new InfusionRecipe(
+								"PACKAGEDTHAUMIC_CLATHRATEESSENCEMATERIALIZER",
+								new ItemStack(BlockClathrateEssenceMaterializer.INSTANCE),
+								6,
+								new AspectList().
+								add(Aspect.EXCHANGE, 50).
+								add(Aspect.MECHANISM, 25).
+								add(Aspect.COLD, 15).
+								add(Aspect.ALCHEMY, 10).
+								add(Aspect.CRYSTAL, 10),
+								new ItemStack(coalescenceCore),
+								new Object[] {
+										new ItemStack(ItemsTC.mechanismComplex),
+										new ItemStack(BlockClathrateEssenceFormer.INSTANCE),
+										new ItemStack(fluixBlock),
+										new ItemStack(BlockClathrateEssenceFormer.INSTANCE),
+										new ItemStack(ItemsTC.salisMundus),
+										new ItemStack(BlockClathrateEssenceFormer.INSTANCE),
+										new ItemStack(fluixBlock),
+										new ItemStack(BlockClathrateEssenceFormer.INSTANCE),
+								}));
+			};
+			r.get().run();
+		}
 	}
 }

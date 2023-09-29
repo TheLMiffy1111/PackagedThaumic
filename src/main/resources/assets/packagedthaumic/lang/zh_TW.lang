@@ -18,6 +18,7 @@ tile.packagedthaumic.marked_arcane_pedestal.name=標記奧術基座
 tile.packagedthaumic.marked_ancient_pedestal.name=標記亙古基座
 tile.packagedthaumic.marked_eldritch_pedestal.name=標記異象基座
 tile.packagedthaumic.virial_recharge_pedestal.name=自魔充魔基座
+tile.packagedthaumic.clathrate_essence_materializer.name=源質水合物實物化器
 
 item.packagedthaumic.thaumic_package_component.name=秘術封包元件
 item.packagedthaumic.porous_stone_plate.name=多孔石板

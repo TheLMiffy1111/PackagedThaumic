@@ -18,6 +18,7 @@ tile.packagedthaumic.marked_arcane_pedestal.name=Marked Arcane Pedestal
 tile.packagedthaumic.marked_ancient_pedestal.name=Marked Ancient Pedestal
 tile.packagedthaumic.marked_eldritch_pedestal.name=Marked Eldritch Pedestal
 tile.packagedthaumic.virial_recharge_pedestal.name=Virial Recharge Pedestal
+tile.packagedthaumic.clathrate_essence_materializer.name=Essentia Clathrate Materializer
 
 item.packagedthaumic.thaumic_package_component.name=Thaumic Packaging Component
 item.packagedthaumic.porous_stone_plate.name=Porous Stone Plate
@@ -97,3 +98,7 @@ research.packagedthaumic.INFUSIONCRAFTERANCIENT.stage.1=I can use ancient stone 
 
 research.packagedthaumic.INFUSIONCRAFTERELDRITCH.title=Packaged Infusion: Eldritch Stone
 research.packagedthaumic.INFUSIONCRAFTERELDRITCH.stage.1=I can use eldritch stone to build components of the Package Infusion Altar, with effects similar to using eldritch stone in a normal infusion altar.
+
+research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.title=Digisentia Clathrates
+research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.stage.1=I have been able to create components that are able to transport essentia digitally in ME systems.<BR>Therefore, it may be convenient to be able to directly convert digital essentia to essentia clathrates in an ME system.<BR>To do this, I would need to form essentia clathrates instantaneously.
+research.packagedthaumic.CLATHRATEESSENCEMATERIALIZER.stage.2=By combining multiple Essentia Clathrate Formers together with the coalescence core and some fluix, I have created a machine that converts digital essentia into essentia clathrates instantaneously.<BR>I need to make sure my ME system has sufficient energy storage to use this device, as much more energy is needed to achieve instantaneous essentia clathrate formation, and the device can only use energy from the ME system.<BR>I also should not add more than one of this device to my ME system, as doing this will make the ME system count the same essentia multiple times.

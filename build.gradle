@@ -51,7 +51,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.0.0"
+version = "1.0.1.1"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
@@ -103,18 +103,18 @@ dependencies {
 
 	implementation fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
 	implementation fg.deobf("codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal")
-	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.690")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.690")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.690")
-	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:2.0.6.32")
+	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.693")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.693")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.693")
+	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:2.0.6.37")
 
-	implementation fg.deobf("curse.maven:packagedauto-308380:4678906")
+	implementation fg.deobf("curse.maven:packagedauto-308380:4768232")
 	implementation fg.deobf("curse.maven:applied-energistics-2-223794:2747063")
 	implementation fg.deobf("curse.maven:baubles-227083:2518667")
 	implementation fg.deobf("curse.maven:thaumcraft-223628:2629023")
 	implementation fg.deobf("curse.maven:thaumic-jei-285492:2705304")
 	implementation fg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158")
-	implementation fg.deobf("curse.maven:thaumic-augmentation-319441:4486505-sources-4486509")
+	implementation fg.deobf("curse.maven:thaumic-augmentation-319441:4486505")
 	implementation fg.deobf("curse.maven:thaumic-additions-232564:3663195")
 	implementation fg.deobf("curse.maven:redstone-flux-270789:2920436")
 	implementation fg.deobf("curse.maven:cofh-core-69162:2920433")
