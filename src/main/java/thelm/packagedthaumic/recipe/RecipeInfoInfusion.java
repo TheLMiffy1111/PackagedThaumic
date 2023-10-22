@@ -165,6 +165,9 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 			if(recipe != null) {
 				this.recipe = recipe;
 				this.aspects = recipe.getAspects(fakePlayer, inputCenter, inputPedestal);
+				if(this.aspects == null) {
+					this.aspects = new AspectList();
+				}
 				Object outputObj = recipe.getRecipeOutput(fakePlayer, inputCenter, inputPedestal);
 				this.instability = recipe.getInstability(fakePlayer, inputCenter, inputPedestal);
 				this.output = getOutput(inputCenter, outputObj);

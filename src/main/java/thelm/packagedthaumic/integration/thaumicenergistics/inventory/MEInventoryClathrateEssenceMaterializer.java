@@ -46,39 +46,41 @@ public class MEInventoryClathrateEssenceMaterializer implements IMEInventory<IAE
 
 	@Override
 	public IAEItemStack extractItems(IAEItemStack request, Actionable mode, IActionSource source) {
-		if(tile.hostHelper.isActive()) {
-			Aspect aspect = ItemClathrateEssence.INSTANCE.getAspect(request.getDefinition());
-			if(aspect == null) {
-				return null;
-			}
-			IGrid grid = tile.getActionableNode().getGrid();
-			IStorageGrid storageGrid = grid.getCache(IStorageGrid.class);
-			IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
-			IEssentiaStorageChannel essentiaChannel = AEApi.instance().storage().getStorageChannel(IEssentiaStorageChannel.class);
-			IMEMonitor<IAEEssentiaStack> essentiaInv = storageGrid.getInventory(essentiaChannel);
-			IAEEssentiaStack essentiaRequest = essentiaChannel.createStack(aspect).setStackSize(request.getStackSize());
-			IAEEssentiaStack possible = essentiaInv.extractItems(essentiaRequest.copy(), Actionable.SIMULATE, source);
-			long canRetrieve = 0;
-			if(possible != null) {
-				canRetrieve = possible.getStackSize();
-			}
-			if(canRetrieve == 0) {
-				return null;
-			}
-			double conversion = PowerUnits.RF.convertTo(PowerUnits.AE, 1);
-			double energyFactor = TileClathrateEssenceMaterializer.energyUsage*conversion;
-			double availablePower = energyGrid.extractAEPower((canRetrieve+0.5)*energyFactor, Actionable.SIMULATE, PowerMultiplier.CONFIG);
-			long canExtract = (long)(availablePower/energyFactor);
-			if(canExtract > 0) {
-				if(mode == Actionable.MODULATE) {
-					energyGrid.extractAEPower(canExtract*energyFactor, Actionable.MODULATE, PowerMultiplier.CONFIG);
-					possible.setStackSize(canExtract);
-					essentiaInv.extractItems(possible, Actionable.MODULATE, source);
-				}
-				return request.copy().setStackSize(canExtract);
-			}
+		if(!tile.hostHelper.isActive()) {
+			return null;
 		}
-		return null;
+		ItemStack definition = request.getDefinition();
+		if(definition.getItem() != ItemClathrateEssence.INSTANCE) {
+			return null;
+		}
+		Aspect aspect = ItemClathrateEssence.INSTANCE.getAspect(definition);
+		if(aspect == null) {
+			return null;
+		}
+		IGrid grid = tile.getActionableNode().getGrid();
+		IStorageGrid storageGrid = grid.getCache(IStorageGrid.class);
+		IEssentiaStorageChannel essentiaChannel = AEApi.instance().storage().getStorageChannel(IEssentiaStorageChannel.class);
+		IMEMonitor<IAEEssentiaStack> essentiaInv = storageGrid.getInventory(essentiaChannel);
+		IAEEssentiaStack essentiaRequest = essentiaChannel.createStack(aspect).setStackSize(request.getStackSize());
+		IAEEssentiaStack possible = essentiaInv.extractItems(essentiaRequest.copy(), Actionable.SIMULATE, tile.hostHelper.source);
+		long canRetrieve = possible != null ? possible.getStackSize() : 0;
+		if(canRetrieve == 0) {
+			return null;
+		}
+		IEnergyGrid energyGrid = grid.getCache(IEnergyGrid.class);
+		double conversion = PowerUnits.RF.convertTo(PowerUnits.AE, 1);
+		double energyFactor = TileClathrateEssenceMaterializer.energyUsage*conversion;
+		double availablePower = energyGrid.extractAEPower((canRetrieve+0.5)*energyFactor, Actionable.SIMULATE, PowerMultiplier.CONFIG);
+		long canExtract = (long)(availablePower/energyFactor);
+		if(canExtract == 0) {
+			return null;
+		}
+		possible.setStackSize(canExtract);
+		IAEEssentiaStack extracted = essentiaInv.extractItems(possible, mode, tile.hostHelper.source);
+		if(mode == Actionable.MODULATE) {
+			energyGrid.extractAEPower(canExtract*energyFactor, Actionable.MODULATE, PowerMultiplier.CONFIG);
+		}
+		return extracted != null ? request.copy().setStackSize(extracted.getStackSize()) : null;
 	}
 
 	@Override

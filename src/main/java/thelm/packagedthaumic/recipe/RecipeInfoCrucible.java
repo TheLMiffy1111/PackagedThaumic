@@ -85,7 +85,8 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 
 	@Override
 	public AspectList getAspects() {
-		return recipe.getAspects();
+		AspectList aspects = recipe.getAspects();
+		return aspects != null ? aspects.copy() : new AspectList();
 	}
 
 	@Override
@@ -149,7 +150,7 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 		for(IThaumcraftRecipe rec : ThaumcraftApi.getCraftingRecipes().values()) {
 			if(rec != null && rec instanceof CrucibleRecipe) {
 				CrucibleRecipe cRec = (CrucibleRecipe)rec;
-				if(cRec.matches(aspects, inputCatalyst)) {
+				if(cRec.getAspects() != null && cRec.matches(aspects, inputCatalyst)) {
 					int result = cRec.getAspects().visSize();
 					if(result > highest) {
 						highest = result;

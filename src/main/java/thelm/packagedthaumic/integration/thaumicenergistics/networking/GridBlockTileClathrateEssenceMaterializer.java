@@ -17,7 +17,6 @@ public class GridBlockTileClathrateEssenceMaterializer extends GridBlockTileBase
 
 	@Override
 	public void gridChanged() {
-		super.gridChanged();
 		IGrid grid = tile.getActionableNode().getGrid();
 		if(grid != null) {
 			IStorageGrid storageGrid = grid.getCache(IStorageGrid.class);

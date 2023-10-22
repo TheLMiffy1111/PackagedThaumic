@@ -28,7 +28,9 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumicenergistics.api.storage.IEssentiaStorageChannel;
 import thelm.packagedauto.tile.TileBase;
+import thelm.packagedthaumic.integration.thaumicenergistics.inventory.MECraftingInventoryClathrateEssenceMaterializer;
 import thelm.packagedthaumic.integration.thaumicenergistics.inventory.MEInventoryClathrateEssenceMaterializer;
 import thelm.packagedthaumic.integration.thaumicenergistics.networking.HostHelperTileClathrateEssenceMaterializer;
 
@@ -39,6 +41,7 @@ public class TileClathrateEssenceMaterializer extends TileBase implements ITicka
 
 	public HostHelperTileClathrateEssenceMaterializer hostHelper = new HostHelperTileClathrateEssenceMaterializer(this);
 	public MEInventoryClathrateEssenceMaterializer meInventory = new MEInventoryClathrateEssenceMaterializer(this);
+	public MECraftingInventoryClathrateEssenceMaterializer meCraftingInventory = new MECraftingInventoryClathrateEssenceMaterializer(this);
 	public boolean firstTick = true;
 	public boolean prevActiveState = false;
 
@@ -90,8 +93,13 @@ public class TileClathrateEssenceMaterializer extends TileBase implements ITicka
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List<IMEInventoryHandler> getCellArray(IStorageChannel<?> channel) {
-		if(hostHelper.isActive() && AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class) == channel) {
-			return Collections.singletonList(meInventory.invHandler);
+		if(hostHelper.isActive()) {
+			if(AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class) == channel) {
+				return Collections.singletonList(meInventory.invHandler);
+			}
+			if(AEApi.instance().storage().getStorageChannel(IEssentiaStorageChannel.class) == channel) {
+				return Collections.singletonList(meCraftingInventory.invHandler);
+			}
 		}
 		return Collections.emptyList();
 	}

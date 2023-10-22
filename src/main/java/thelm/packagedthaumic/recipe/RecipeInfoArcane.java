@@ -90,7 +90,8 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 
 	@Override
 	public AspectList getCrystals() {
-		return recipe.getCrystals().copy();
+		AspectList aspects = recipe.getCrystals();
+		return aspects != null ? aspects.copy() : new AspectList();
 	}
 
 	@Override
@@ -153,9 +154,13 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 			for(IRecipe recipe : CraftingManager.REGISTRY)  {
 				if(recipe instanceof IArcaneRecipe && recipe.matches(matrix, world)) {
 					this.recipe = (IArcaneRecipe)recipe;
+					AspectList aspects = this.recipe.getCrystals();
+					if(aspects == null) {
+						aspects = new AspectList();
+					}
 					for(int i = 9; i < 15; ++i) {
 						Aspect aspect = ShardType.byMetadata(i-9).getAspect();
-						int amount = this.recipe.getCrystals().getAmount(aspect);
+						int amount = aspects.getAmount(aspect);
 						ItemStack crystal = amount > 0 ? ThaumcraftApiHelper.makeCrystal(aspect, amount) : ItemStack.EMPTY;
 						matrix.setInventorySlotContents(i, crystal);
 						input.set(slotArray[i], crystal.copy());

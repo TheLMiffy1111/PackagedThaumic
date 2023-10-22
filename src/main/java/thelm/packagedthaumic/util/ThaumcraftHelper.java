@@ -39,20 +39,22 @@ public class ThaumcraftHelper {
 
 	public List<ItemStack> makeClathrates(AspectList aspects, boolean ignoreStackSize) {
 		List<ItemStack> list = new ArrayList<>();
-		for(Map.Entry<Aspect, Integer> entry : aspects.aspects.entrySet()) {
-			Aspect aspect = entry.getKey();
-			int amount = entry.getValue();
-			if(aspect != null) {
-				if(ignoreStackSize) {
-					list.add(ItemClathrateEssence.makeClathrate(aspect, amount));
-				}
-				else {
-					while(amount > 0) {
-						ItemStack toAdd = ItemClathrateEssence.makeClathrate(aspect, 1);
-						int limit = toAdd.getItem().getItemStackLimit(toAdd);
-						toAdd.setCount(Math.min(amount, limit));
-						list.add(toAdd);
-						amount -= limit;
+		if(aspects != null) {
+			for(Map.Entry<Aspect, Integer> entry : aspects.aspects.entrySet()) {
+				Aspect aspect = entry.getKey();
+				int amount = entry.getValue();
+				if(aspect != null) {
+					if(ignoreStackSize) {
+						list.add(ItemClathrateEssence.makeClathrate(aspect, amount));
+					}
+					else {
+						while(amount > 0) {
+							ItemStack toAdd = ItemClathrateEssence.makeClathrate(aspect, 1);
+							int limit = toAdd.getItem().getItemStackLimit(toAdd);
+							toAdd.setCount(Math.min(amount, limit));
+							list.add(toAdd);
+							amount -= limit;
+						}
 					}
 				}
 			}
