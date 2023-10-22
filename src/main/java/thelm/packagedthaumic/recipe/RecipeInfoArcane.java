@@ -139,17 +139,16 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 			for(int i = 9; i < 15; ++i) {
 				ItemStack toSet = input.get(slotArray[i]);
 				if(toSet.getItem() instanceof ItemCrystalEssence) {
-					Aspect aspect = ((ItemCrystalEssence)toSet.getItem()).getAspects(toSet).getAspects()[0];
-					if(ShardType.getMetaByAspect(aspect) == i-9) {
-						matrix.setInventorySlotContents(i, toSet.copy());
-					}
-					else {
-						input.set(slotArray[i], ItemStack.EMPTY);
+					AspectList aspects = ((ItemCrystalEssence)toSet.getItem()).getAspects(toSet);
+					if(aspects != null) {
+						Aspect aspect = aspects.getAspects()[0];
+						if(ShardType.getMetaByAspect(aspect) == i-9) {
+							matrix.setInventorySlotContents(i, toSet.copy());
+							continue;
+						}
 					}
 				}
-				else {
-					input.set(slotArray[i], ItemStack.EMPTY);
-				}
+				input.set(slotArray[i], ItemStack.EMPTY);
 			}
 			for(IRecipe recipe : CraftingManager.REGISTRY)  {
 				if(recipe instanceof IArcaneRecipe && recipe.matches(matrix, world)) {

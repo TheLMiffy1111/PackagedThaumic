@@ -124,6 +124,7 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 				if(i == 0) {
 					toSet.setCount(1);
 					inputCatalyst = toSet.copy();
+					continue;
 				}
 				else if(toSet.getItem() instanceof IEssentiaContainerItem) {
 					AspectList toAdd = ((IEssentiaContainerItem)toSet.getItem()).getAspects(toSet);
@@ -135,14 +136,10 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 								aspects.add(aspect, amount*toSet.getCount());
 							}
 						}
-					}
-					else {
-						input.set(slotArray[i], ItemStack.EMPTY);
+						continue;
 					}
 				}
-				else {
-					input.set(slotArray[i], ItemStack.EMPTY);
-				}
+				input.set(slotArray[i], ItemStack.EMPTY);
 			}
 		}
 		CrucibleRecipe recipe = null;
