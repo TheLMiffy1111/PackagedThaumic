@@ -224,7 +224,6 @@ public class TileVirialArcaneCrafter extends TileBase implements ITickable, IPac
 	}
 
 	protected void chargeEnergy() {
-		int prevStored = energyStorage.getEnergyStored();
 		ItemStack energyStack = inventory.getStackInSlot(16);
 		if(energyStack.hasCapability(CapabilityEnergy.ENERGY, null)) {
 			int energyRequest = Math.min(energyStorage.getMaxReceive(), energyStorage.getMaxEnergyStored() - energyStorage.getEnergyStored());

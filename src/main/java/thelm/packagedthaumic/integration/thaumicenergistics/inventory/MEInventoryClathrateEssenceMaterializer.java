@@ -35,7 +35,7 @@ public class MEInventoryClathrateEssenceMaterializer implements IMEInventory<IAE
 
 	public MEInventoryClathrateEssenceMaterializer(TileClathrateEssenceMaterializer tile) {
 		this.tile = tile;
-		invHandler = new MEInventoryHandler(this, AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class));
+		invHandler = new MEInventoryHandler<>(this, AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class));
 		invHandler.setPriority(Integer.MIN_VALUE);
 	}
 
@@ -93,7 +93,7 @@ public class MEInventoryClathrateEssenceMaterializer implements IMEInventory<IAE
 				IMEMonitor<IAEEssentiaStack> essentiaInv = storageGrid.getInventory(essentiaChannel);
 				for(IAEEssentiaStack essentia : essentiaInv.getStorageList()) {
 					Aspect aspect = essentia.getAspect();
-					ItemStack stack = ItemClathrateEssence.INSTANCE.makeClathrate(aspect, 1);
+					ItemStack stack = ItemClathrateEssence.makeClathrate(aspect, 1);
 					itemCache.add(itemChannel.createStack(stack).setStackSize(essentia.getStackSize()));
 				}
 			}
@@ -138,7 +138,7 @@ public class MEInventoryClathrateEssenceMaterializer implements IMEInventory<IAE
 			List<IAEItemStack> mappedChanges = new ArrayList<>();
 			for(IAEEssentiaStack essentia : change) {
 				Aspect aspect = essentia.getAspect();
-				ItemStack stack = ItemClathrateEssence.INSTANCE.makeClathrate(aspect, 1);
+				ItemStack stack = ItemClathrateEssence.makeClathrate(aspect, 1);
 				IAEItemStack itemStack = itemChannel.createStack(stack).setStackSize(essentia.getStackSize());
 				mappedChanges.add(itemStack);
 			}

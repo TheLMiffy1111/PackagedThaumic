@@ -467,6 +467,7 @@ public class CommonProxy {
 		Part[][][] blueprintCrucible = new Part[][][] {
 			{{crcr}},
 			{{cruc}},
+			{{magm}},
 		};
 		ThaumcraftApi.addMultiblockRecipeToCatalog(
 				new ResourceLocation("packagedthaumic:crucible_crafter_structure"),

@@ -87,6 +87,7 @@ public class TileClathrateEssenceMaterializer extends TileBase implements ITicka
 		return hostHelper.getNode();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<IMEInventoryHandler> getCellArray(IStorageChannel<?> channel) {
 		if(hostHelper.isActive() && AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class) == channel) {

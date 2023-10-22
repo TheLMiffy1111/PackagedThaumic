@@ -65,7 +65,6 @@ public class TileVirialRechargePedestal extends TileBase implements ITickable, I
 	}
 
 	protected void chargeEnergy() {
-		int prevStored = energyStorage.getEnergyStored();
 		ItemStack energyStack = inventory.getStackInSlot(1);
 		if(energyStack.hasCapability(CapabilityEnergy.ENERGY, null)) {
 			int energyRequest = Math.min(energyStorage.getMaxReceive(), energyStorage.getMaxEnergyStored() - energyStorage.getEnergyStored());

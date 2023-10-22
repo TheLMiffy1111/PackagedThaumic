@@ -105,7 +105,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 	public IPlayerKnowledge ownerKnowledge = ThaumcraftCapabilities.KNOWLEDGE.getDefaultInstance();
 	public boolean researchRequired = false;
 	public AspectList aspects = new AspectList();
-	public ArrayList<BlockPos> problemBlocks = new ArrayList();
+	public ArrayList<BlockPos> problemBlocks = new ArrayList<>();
 	public int craftCount = 0;
 	public double baseTimeMultiplier = 1;
 	public double baseEssentiaTimeMultiplier = 1;
@@ -618,7 +618,6 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 	}
 
 	protected void chargeEnergy() {
-		int prevStored = energyStorage.getEnergyStored();
 		ItemStack energyStack = inventory.getStackInSlot(2);
 		if(energyStack.hasCapability(CapabilityEnergy.ENERGY, null)) {
 			int energyRequest = Math.min(energyStorage.getMaxReceive(), energyStorage.getMaxEnergyStored() - energyStorage.getEnergyStored());
@@ -691,7 +690,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 		return isWorking ? new String[] {
 				"§l"+I18n.translateToLocal(stabilityKey),
 				"§6§o"+STABILITY_FORMATTER.format(stabilityGain)+" "+I18n.translateToLocal("stability.gain"),
-				"§c"+I18n.translateToLocal("stability.range")+"§o"+STABILITY_FORMATTER.format(getStabilityLoss())+" "+I18n.translateToLocal("stability.loss"),
+				"§c"+I18n.translateToLocal("stability.range")+"§o"+STABILITY_FORMATTER.format(loss)+" "+I18n.translateToLocal("stability.loss"),
 		} : new String[] {
 				"§l"+I18n.translateToLocal(stabilityKey),
 				"§6§o"+STABILITY_FORMATTER.format(stabilityGain)+" "+I18n.translateToLocal("stability.gain"),
