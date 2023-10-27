@@ -807,9 +807,10 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 		structureValid = nbt.getBoolean("StructureValid");
 		inventory.readFromNBT(nbt);
 		aspects.readFromNBT(nbt);
-		NBTTagList injectorsTag = nbt.getTagList("Pedestals", 11);
-		for(int i = 0; i < injectorsTag.tagCount(); ++i) {
-			int[] posArray = injectorsTag.getIntArrayAt(i);
+		pedestals.clear();
+		NBTTagList pedestalsTag = nbt.getTagList("Pedestals", 11);
+		for(int i = 0; i < pedestalsTag.tagCount(); ++i) {
+			int[] posArray = pedestalsTag.getIntArrayAt(i);
 			BlockPos pos = new BlockPos(posArray[0], posArray[1], posArray[2]);
 			pedestals.add(pos);
 		}

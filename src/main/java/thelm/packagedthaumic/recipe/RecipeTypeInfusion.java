@@ -73,16 +73,6 @@ public class RecipeTypeInfusion implements IRecipeType {
 	public IntSet getEnabledSlots() {
 		return SLOTS;
 	}
-
-	@Override
-	public boolean canSetOutput() {
-		return false;
-	}
-
-	@Override
-	public boolean hasMachine() {
-		return true;
-	}
 	
 	@Override
 	public List<String> getJEICategories() {

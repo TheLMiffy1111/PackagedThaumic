@@ -51,7 +51,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.2.2"
+version = "1.0.1.2"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
