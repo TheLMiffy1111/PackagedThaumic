@@ -25,6 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
@@ -162,16 +163,8 @@ public class TileClathrateEssenceFormer extends TileBase implements ITickable, I
 					SMELTER_CLASSES.stream().noneMatch(c->c.isAssignableFrom(tile.getClass())) &&
 					tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing.getOpposite())) {
 				IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing.getOpposite());
-				for(int slot = 0; slot < itemHandler.getSlots(); ++slot) {
-					ItemStack stackRem = itemHandler.insertItem(slot, stack, false);
-					if(stackRem.getCount() < stack.getCount()) {
-						stack = stackRem;
-					}
-					if(stack.isEmpty()) {
-						break;
-					}
-				}
-				inventory.setInventorySlotContents(0, stack);
+				ItemStack stackRem = ItemHandlerHelper.insertItem(itemHandler, stack, false);
+				inventory.setInventorySlotContents(0, stackRem);
 			}
 		}
 	}
