@@ -103,10 +103,10 @@ dependencies {
 
 	implementation fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
 	implementation fg.deobf("codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal")
-	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.693")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.693")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.693")
-	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:2.0.6.37")
+	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.695")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.695")
+	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695")
+	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:12.2.46")
 
 	implementation fg.deobf("curse.maven:packagedauto-308380:4819402")
 	implementation fg.deobf("curse.maven:applied-energistics-2-223794:2747063")
