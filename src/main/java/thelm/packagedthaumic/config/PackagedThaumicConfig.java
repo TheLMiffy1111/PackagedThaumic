@@ -61,6 +61,7 @@ public class PackagedThaumicConfig {
 		TileInfusionCrafter.energyUsage = config.get(category, "energy_usage", TileInfusionCrafter.energyUsage, "How much FE/t maximum the Package Runic Matrix should use.", 0, Integer.MAX_VALUE).getInt();
 		TileInfusionCrafter.requiresPillars = config.get(category, "requires_pillars", TileInfusionCrafter.requiresPillars, "Should the Package Runic Matrix pillars below.").getBoolean();
 		TileInfusionCrafter.drawMEEnergy = config.get(category, "draw_me_energy", TileInfusionCrafter.drawMEEnergy, "Should the Package Runic Matrix draw energy from ME systems.").getBoolean();
+		TileInfusionCrafter.itemParticleRate = config.get(category, "item_particle_rate", TileInfusionCrafter.itemParticleRate, "The rate the Package Runic Matrix should spwan item particles at.", 0, 4).getDouble();
 		category = "blocks.virial_recharge_pedestal";
 		TileVirialRechargePedestal.energyCapacity = config.get(category, "energy_capacity", TileVirialRechargePedestal.energyCapacity, "How much FE the Virial Recharge Pedestal should hold.", 0, Integer.MAX_VALUE).getInt();
 		TileVirialRechargePedestal.energyPerVis = config.get(category, "energy_per_vis", TileVirialRechargePedestal.energyPerVis, "How much FE the Virial Recharge Pedestal should use per vis.", 1000, Integer.MAX_VALUE).getInt();

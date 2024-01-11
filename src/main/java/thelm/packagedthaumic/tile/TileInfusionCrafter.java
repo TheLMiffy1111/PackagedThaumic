@@ -100,6 +100,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 	public static int energyUsage = 100;
 	public static boolean requiresPillars = true;
 	public static boolean drawMEEnergy = true;
+	public static double itemParticleRate = 0.5;
 
 	public boolean firstTick = true;
 	public boolean structureValid = false;
@@ -243,19 +244,22 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 					}
 					else {
 						Item bi = is.getItem();
-						if(bi instanceof ItemBlock) {
-							FXDispatcher.INSTANCE.drawInfusionParticles2(
-									pedestalPos.getX()+world.rand.nextDouble(),
-									pedestalPos.getY()+world.rand.nextDouble()+1,
-									pedestalPos.getZ()+world.rand.nextDouble(),
-									pos, Block.getBlockFromItem(bi).getDefaultState(), is.getItemDamage());
-						}
-						else {
-							FXDispatcher.INSTANCE.drawInfusionParticles1(
-									pedestalPos.getX()+0.4+world.rand.nextDouble()*0.2,
-									pedestalPos.getY()+1.23+world.rand.nextDouble()*0.2,
-									pedestalPos.getZ()+0.4+world.rand.nextDouble()*0.2,
-									pos, is);
+						int count = (int)itemParticleRate + world.rand.nextDouble() < (itemParticleRate % 1) ? 1 : 0;
+						for(int i = 0; i < count; ++i) {
+							if(bi instanceof ItemBlock) {
+								FXDispatcher.INSTANCE.drawInfusionParticles2(
+										pedestalPos.getX()+world.rand.nextDouble(),
+										pedestalPos.getY()+world.rand.nextDouble()+1,
+										pedestalPos.getZ()+world.rand.nextDouble(),
+										pos, Block.getBlockFromItem(bi).getDefaultState(), is.getItemDamage());
+							}
+							else {
+								FXDispatcher.INSTANCE.drawInfusionParticles1(
+										pedestalPos.getX()+0.4+world.rand.nextDouble()*0.2,
+										pedestalPos.getY()+1.23+world.rand.nextDouble()*0.2,
+										pedestalPos.getZ()+0.4+world.rand.nextDouble()*0.2,
+										pos, is);
+							}
 						}
 					}
 				}
