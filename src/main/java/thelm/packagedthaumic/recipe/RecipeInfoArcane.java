@@ -150,7 +150,7 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 				}
 				input.set(slotArray[i], ItemStack.EMPTY);
 			}
-			for(IRecipe recipe : CraftingManager.REGISTRY)  {
+			for(IRecipe recipe : (Iterable<IRecipe>)CraftingManager.REGISTRY)  {
 				if(recipe instanceof IArcaneRecipe && recipe.matches(matrix, world)) {
 					this.recipe = (IArcaneRecipe)recipe;
 					AspectList aspects = this.recipe.getCrystals();

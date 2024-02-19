@@ -1,47 +1,67 @@
 plugins {
-	id "net.neoforged.gradle" version "[6.0.13,7)"
-	id "wtf.gofancy.fancygradle" version "[1.1,)"
+	id "com.crystaelix.loom" version "jitpack-afd363f1"
 	id "eclipse"
 	id "idea"
 	id "maven-publish"
+	id "net.kyori.blossom" version "[1,2)"
+	id "me.modmuss50.mod-publish-plugin" version "0.5.0"
 }
-
-apply from: "mixinTweakFix.gradle"
 
 repositories {
 	mavenCentral()
 	flatDir {
 		dirs "libs"
 	}
-	maven {
-		url = "https://maven.minecraftforge.net/"
-	}
-	maven {
-		url = "https://repo.spongepowered.org/maven/"
-	}
-	maven {
-		url = "https://maven.su5ed.dev/releases/"
-	}
-	maven {
-		url = "https://maven.blamejared.com/"
-	}
-	maven {
-		url = "https://maven.covers1624.net/"
-	}
-	maven {
-		url = "https://maven.zeith.org/"
-	}
-	maven {
-		url = "https://repo.cleanroommc.com/releases/"
-	}
-	maven {
-		url = "https://cursemaven.com/"
-		content {
-			includeGroup "curse.maven"
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.blamejared.com/"
+			}
+		}
+		filter {
+			includeGroup "mezz.jei"
+			includeGroup "vazkii.patchouli"
 		}
 	}
-	maven {
-		url = "https://modmaven.dev/"
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.amadornes.com/"
+			}
+		}
+		filter {
+			includeGroup "MCMultiPart2"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.zeith.org/"
+			}
+		}
+		filter {
+			includeGroup "org.zeith.HammerLib"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://repo.cleanroommc.com/releases/"
+			}
+		}
+		filter {
+			includeGroup "zone.rong"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://cursemaven.com/"
+			}
+		}
+		filter {
+			includeGroup "curse.maven"
+		}
 	}
 }
 
@@ -56,7 +76,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.2.4"
+version = "1.0.2.5"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
@@ -69,77 +89,68 @@ tasks.withType(JavaCompile).configureEach {
 	options.encoding = "UTF-8"
 }
 
-minecraft {
-	mappings channel: "stable", version: "39-1.12"
-	generateRunFolders = true
+loom {
+	silentMojangMappingsLicense()
+	interfaceInjection.enableDependencyInterfaceInjection = false
 	runs {
 		configureEach {
-			workingDirectory project.file("run")
-			property "forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP"
-			property "forge.logging.console.level", "debug"
-			property "mixin.env.remapRefMap", "true"
-			property "mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg"
-			environment "MC_VERSION", mcVersion
-			mods {
-				"${modId}" {
-					source sourceSets.main
-				}
-			}
+			property "fabric.log.console.level", "debug"
+			environmentVariable "MC_VERSION", mcVersion
 		}
 		client {
-			arg "--username=Dev"
+			programArg "--username=Dev"
 		}
 		server
 	}
-}
-
-fancyGradle {
-	patches {
-		resources
-		coremods
-		codeChickenLib
-		asm
-		mergetool
-	}
+	generatedIntermediateMappings()
 }
 
 dependencies {
-	minecraft "net.minecraftforge:forge:1.12.2-14.23.5.2859"
+	// Log4j
+	implementation "org.apache.logging.log4j:log4j-core:2.22.1"
 
-	implementation fg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
-	implementation fg.deobf("codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal")
-	implementation fg.deobf("CraftTweaker2:ZenScript:4.1.20.697")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:4.1.20.697")
-	implementation fg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.697")
-	implementation fg.deobf("org.zeith.HammerLib:HammerLib-1.12.2:12.2.46")
+	// Minecraft
+	minecraft "com.mojang:minecraft:1.12.2"
+	mappings "de.oceanlabs.mcp:mcp_stable:39-1.12"
+	legacyForge "net.minecraftforge:forge:1.12.2-14.23.5.2860"
 
-	implementation fg.deobf("curse.maven:packagedauto-308380:4819402")
-	implementation fg.deobf("curse.maven:applied-energistics-2-223794:2747063")
-	implementation fg.deobf("curse.maven:baubles-227083:2518667")
-	implementation fg.deobf("curse.maven:thaumcraft-223628:2629023")
-	implementation fg.deobf("curse.maven:thaumic-jei-285492:2705304")
-	implementation fg.deobf("curse.maven:thaumic-energistics-extended-life-849094:4513158")
-	implementation fg.deobf("curse.maven:thaumic-augmentation-319441:4486505")
-	implementation fg.deobf("curse.maven:thaumic-additions-232564:3663195")
-	implementation fg.deobf("curse.maven:redstone-flux-270789:2920436")
-	implementation fg.deobf("curse.maven:cofh-core-69162:2920433")
-	implementation fg.deobf("curse.maven:cofh-world-271384:2920434")
-	implementation fg.deobf("curse.maven:thermal-foundation-222880:2926428")
-	implementation fg.deobf("curse.maven:thermal-expansion-69163:2926431")
-	implementation fg.deobf("curse.maven:thermal-dynamics-227443:2920505")
+	// Dependencies
+	modImplementation "curse.maven:packagedauto-308380:5118642"
+	modImplementation "curse.maven:baubles-227083:2518667"
+	modImplementation "curse.maven:thaumcraft-223628:2629023"
+	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1012"
+	modImplementation "curse.maven:thaumic-jei-285492:2705304"
+	modImplementation "curse.maven:applied-energistics-2-223794:2747063"
+	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:4513158"
+	modImplementation "vazkii.patchouli:Patchouli:1.0-23.6"
 
-	//Performance
-	implementation fg.deobf("curse.maven:reid-629017:4949840")
-	implementation("zone.rong:mixinbooter:7.1") {
-		transitive = false
-	}
-	implementation fg.deobf("curse.maven:vintagefix-871198:4800687")
-	implementation fg.deobf("curse.maven:lolasm-460609:4800875")
+	// Testing
+	modImplementation "org.zeith.HammerLib:HammerLib-1.12.2:12.2.49"
+	modImplementation "curse.maven:thaumic-additions-232564:3663195"
+	modImplementation "MCMultiPart2:MCMultiPart:2.5.3"
+	modImplementation "curse.maven:mekanism-268560:2835175"
+
+	// Performance
+	implementation("zone.rong:mixinbooter:9.1") {transitive = false}
+	modImplementation "curse.maven:reid-629017:4949840"
+	modImplementation "curse.maven:vintagefix-871198:5010926"
+	modImplementation "curse.maven:lolasm-460609:4800875"
 }
 
-configurations.configureEach {
-	resolutionStrategy {
-		force "net.minecraftforge:legacydev:0.2.4.1"
+def replacements = [
+	"0@VERSION@": version
+]
+
+blossom {
+	replaceToken(replacements)
+}
+
+processResources {
+	inputs.properties(replacements)
+	filesMatching(["mcmod.info", "META-INF/mods.toml"]) {
+		filter {
+			it.replace(replacements)
+		}
 	}
 }
 
@@ -154,9 +165,33 @@ def manifestAttributes = [
 
 jar {
 	manifest.attributes(manifestAttributes)
-	finalizedBy("reobfJar")
 }
 
 sourcesJar {
 	manifest.attributes(manifestAttributes)
+}
+
+publishMods {
+	file = remapJar.archiveFile
+	version = displayName = "${mcVersion}-${project.version}"
+	changelog = file("changelog.md").text
+	type = STABLE
+	modLoaders.add("forge")
+	additionalFiles.from(remapSourcesJar.archiveFile)
+
+	curseforge {
+		accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+		projectId = "908613"
+		minecraftVersions.add(mcVersion)
+		requires "packagedauto", "thaumcraft"
+		optional "applied-energistics-2", "thaumic-energistics"
+	}
+
+	modrinth {
+		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+		projectId = "qjnayfYX"
+		minecraftVersions.add(mcVersion)
+		requires "packagedauto"
+		optional "ae2"
+	}
 }

@@ -1,12 +1,12 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "packagedthaumic:infusion_crafter"
-    },
-    "variants": {
-        "normal": [{}],
-        "inventory": [{
-            "submodel": "packagedthaumic:infusion_crafter_matrix"
-        }]
-    }
+	"forge_marker": 1,
+	"defaults": {
+		"model": "packagedthaumic:infusion_crafter"
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{
+			"submodel": "packagedthaumic:infusion_crafter_matrix"
+		}]
+	}
 }

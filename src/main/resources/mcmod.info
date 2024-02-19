@@ -1,0 +1,11 @@
+[
+	{
+		"modid": "packagedthaumic",
+		"version": "0@VERSION@",
+		"name": "PackagedThaumic",
+		"description": "A PackagedAuto addon that adds Thaumcraft autocrafting.",
+		"logoFile": "packagedthaumic.logo.png",
+		"authorList": ["TheLMiffy1111"],
+		"url": "https://www.curseforge.com/minecraft/mc-mods/packagedthaumic"
+	}
+]

@@ -1,12 +1,12 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "textures": {
-            "all": "packagedthaumic:blocks/reinforced_porous_stone"
-        },
-        "model": "cube_all"
-    },
-    "variants": {
-        "normal": [{}]
-    }
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"all": "packagedthaumic:blocks/reinforced_porous_stone"
+		},
+		"model": "cube_all"
+	},
+	"variants": {
+		"normal": [{}]
+	}
 }
