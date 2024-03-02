@@ -1,7 +1,6 @@
 package thelm.packagedthaumic.recipe;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -245,26 +244,13 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 	public boolean equals(Object obj) {
 		if(obj instanceof RecipeInfoInfusion) {
 			RecipeInfoInfusion other = (RecipeInfoInfusion)obj;
-			for(int i = 0; i < input.size(); ++i) {
-				if(!ItemStack.areItemStacksEqualUsingNBTShareTag(input.get(i), other.input.get(i))) {
-					return false;
-				}
-			}
-			return recipe.equals(other.recipe);
+			return MiscUtil.recipeEquals(this, recipe, other, other.recipe);
 		}
 		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		Object[] toHash = new Object[2];
-		Object[] inputArray = new Object[input.size()];
-		for(int i = 0; i < input.size(); ++i) {
-			ItemStack stack = input.get(i);
-			inputArray[i] = new Object[] {stack.getItem(), stack.getItemDamage(), stack.getCount(), stack.getTagCompound()};
-		}
-		toHash[0] = recipe;
-		toHash[1] = inputArray;
-		return Arrays.deepHashCode(toHash);
+		return MiscUtil.recipeHashCode(this, recipe);
 	}
 }
