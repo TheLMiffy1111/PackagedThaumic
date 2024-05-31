@@ -128,48 +128,46 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 		recipe = null;
 		this.input.clear();
 		patterns.clear();
-		if(world != null) {
-			int[] slotArray = RecipeTypeArcane.SLOTS.toIntArray();
-			for(int i = 0; i < 9; ++i) {
-				ItemStack toSet = input.get(slotArray[i]);
-				toSet.setCount(1);
-				matrix.setInventorySlotContents(i, toSet.copy());
-			}
-			for(int i = 9; i < 15; ++i) {
-				ItemStack toSet = input.get(slotArray[i]);
-				if(toSet.getItem() instanceof ItemCrystalEssence) {
-					AspectList aspects = ((ItemCrystalEssence)toSet.getItem()).getAspects(toSet);
-					if(aspects != null) {
-						Aspect aspect = aspects.getAspects()[0];
-						if(ShardType.getMetaByAspect(aspect) == i-9) {
-							matrix.setInventorySlotContents(i, toSet.copy());
-							continue;
-						}
+		int[] slotArray = RecipeTypeArcane.SLOTS.toIntArray();
+		for(int i = 0; i < 9; ++i) {
+			ItemStack toSet = input.get(slotArray[i]);
+			toSet.setCount(1);
+			matrix.setInventorySlotContents(i, toSet.copy());
+		}
+		for(int i = 9; i < 15; ++i) {
+			ItemStack toSet = input.get(slotArray[i]);
+			if(toSet.getItem() instanceof ItemCrystalEssence) {
+				AspectList aspects = ((ItemCrystalEssence)toSet.getItem()).getAspects(toSet);
+				if(aspects != null) {
+					Aspect aspect = aspects.getAspects()[0];
+					if(ShardType.getMetaByAspect(aspect) == i-9) {
+						matrix.setInventorySlotContents(i, toSet.copy());
+						continue;
 					}
 				}
-				input.set(slotArray[i], ItemStack.EMPTY);
 			}
-			for(IRecipe recipe : (Iterable<IRecipe>)CraftingManager.REGISTRY)  {
-				if(recipe instanceof IArcaneRecipe && recipe.matches(matrix, world)) {
-					this.recipe = (IArcaneRecipe)recipe;
-					AspectList aspects = this.recipe.getCrystals();
-					if(aspects == null) {
-						aspects = new AspectList();
-					}
-					for(int i = 9; i < 15; ++i) {
-						Aspect aspect = ShardType.byMetadata(i-9).getAspect();
-						int amount = aspects.getAmount(aspect);
-						ItemStack crystal = amount > 0 ? ThaumcraftApiHelper.makeCrystal(aspect, amount) : ItemStack.EMPTY;
-						matrix.setInventorySlotContents(i, crystal);
-						input.set(slotArray[i], crystal.copy());
-					}
-					this.input.addAll(MiscUtil.condenseStacks(matrix));
-					this.output = recipe.getCraftingResult(matrix).copy();
-					for(int i = 0; i*9 < this.input.size(); ++i) {
-						patterns.add(new PatternHelper(this, i));
-					}
-					return;
+			input.set(slotArray[i], ItemStack.EMPTY);
+		}
+		for(IRecipe recipe : (Iterable<IRecipe>)CraftingManager.REGISTRY)  {
+			if(recipe instanceof IArcaneRecipe && recipe.matches(matrix, world)) {
+				this.recipe = (IArcaneRecipe)recipe;
+				AspectList aspects = this.recipe.getCrystals();
+				if(aspects == null) {
+					aspects = new AspectList();
 				}
+				for(int i = 9; i < 15; ++i) {
+					Aspect aspect = ShardType.byMetadata(i-9).getAspect();
+					int amount = aspects.getAmount(aspect);
+					ItemStack crystal = amount > 0 ? ThaumcraftApiHelper.makeCrystal(aspect, amount) : ItemStack.EMPTY;
+					matrix.setInventorySlotContents(i, crystal);
+					input.set(slotArray[i], crystal.copy());
+				}
+				this.input.addAll(MiscUtil.condenseStacks(matrix));
+				this.output = recipe.getCraftingResult(matrix).copy();
+				for(int i = 0; i*9 < this.input.size(); ++i) {
+					patterns.add(new PatternHelper(this, i));
+				}
+				return;
 			}
 		}
 		matrix.clear();

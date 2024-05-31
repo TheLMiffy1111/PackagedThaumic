@@ -141,62 +141,60 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 		aspects.aspects.clear();
 		this.input.clear();
 		patterns.clear();
-		if(world != null) {
-			int[] slotArray = RecipeTypeInfusion.SLOTS.toIntArray();
-			ArrayUtils.shift(slotArray, 0, 19, 1);
-			for(int i = 0; i < 37; ++i) {
-				ItemStack toSet = input.get(slotArray[i]);
-				if(!toSet.isEmpty()) {
-					toSet.setCount(1);
-					if(i == 0) {
-						inputCenter = toSet.copy();
-					}
-					else {
-						inputPedestal.add(toSet.copy());
-					}
+		int[] slotArray = RecipeTypeInfusion.SLOTS.toIntArray();
+		ArrayUtils.shift(slotArray, 0, 19, 1);
+		for(int i = 0; i < 37; ++i) {
+			ItemStack toSet = input.get(slotArray[i]);
+			if(!toSet.isEmpty()) {
+				toSet.setCount(1);
+				if(i == 0) {
+					inputCenter = toSet.copy();
 				}
-				else if(i == 0) {
-					return;
+				else {
+					inputPedestal.add(toSet.copy());
 				}
 			}
-			EntityPlayer fakePlayer = ThaumcraftHelper.INSTANCE.getResearchFakePlayer(world);
-			InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(inputPedestal, inputCenter, fakePlayer);
-			if(recipe != null) {
-				this.recipe = recipe;
-				this.aspects = recipe.getAspects(fakePlayer, inputCenter, inputPedestal);
-				if(this.aspects == null) {
-					this.aspects = new AspectList();
-				}
-				Object outputObj = recipe.getRecipeOutput(fakePlayer, inputCenter, inputPedestal);
-				this.instability = recipe.getInstability(fakePlayer, inputCenter, inputPedestal);
-				this.output = getOutput(inputCenter, outputObj);
-				List<ItemStack> crystals = ThaumcraftHelper.INSTANCE.makeClathrates(aspects);
-				for(int i = 0; i < 81; ++i) {
-					if(RecipeTypeInfusion.SLOTS.contains(i)) {
-						continue;
-					}
-					input.set(i, ItemStack.EMPTY);
-				}
-				int slot = 0;
-				for(ItemStack crystal : crystals) {
-					input.set(slot, crystal);
-					++slot;
-					while(RecipeTypeInfusion.SLOTS.contains(slot)) {
-						++slot;
-					}
-					if(slot >= 81) {
-						break;
-					}
-				}
-				List<ItemStack> toCondense = new ArrayList<>(inputPedestal);
-				toCondense.add(inputCenter);
-				toCondense.addAll(crystals);
-				this.input.addAll(MiscUtil.condenseStacks(toCondense));
-				for(int i = 0; i*9 < this.input.size(); ++i) {
-					patterns.add(new PatternHelper(this, i));
-				}
+			else if(i == 0) {
 				return;
 			}
+		}
+		EntityPlayer fakePlayer = ThaumcraftHelper.INSTANCE.getResearchFakePlayer(world);
+		InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(inputPedestal, inputCenter, fakePlayer);
+		if(recipe != null) {
+			this.recipe = recipe;
+			this.aspects = recipe.getAspects(fakePlayer, inputCenter, inputPedestal);
+			if(this.aspects == null) {
+				this.aspects = new AspectList();
+			}
+			Object outputObj = recipe.getRecipeOutput(fakePlayer, inputCenter, inputPedestal);
+			this.instability = recipe.getInstability(fakePlayer, inputCenter, inputPedestal);
+			this.output = getOutput(inputCenter, outputObj);
+			List<ItemStack> crystals = ThaumcraftHelper.INSTANCE.makeClathrates(aspects);
+			for(int i = 0; i < 81; ++i) {
+				if(RecipeTypeInfusion.SLOTS.contains(i)) {
+					continue;
+				}
+				input.set(i, ItemStack.EMPTY);
+			}
+			int slot = 0;
+			for(ItemStack crystal : crystals) {
+				input.set(slot, crystal);
+				++slot;
+				while(RecipeTypeInfusion.SLOTS.contains(slot)) {
+					++slot;
+				}
+				if(slot >= 81) {
+					break;
+				}
+			}
+			List<ItemStack> toCondense = new ArrayList<>(inputPedestal);
+			toCondense.add(inputCenter);
+			toCondense.addAll(crystals);
+			this.input.addAll(MiscUtil.condenseStacks(toCondense));
+			for(int i = 0; i*9 < this.input.size(); ++i) {
+				patterns.add(new PatternHelper(this, i));
+			}
+			return;
 		}
 	}
 
