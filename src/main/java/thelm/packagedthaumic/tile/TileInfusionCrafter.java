@@ -277,7 +277,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 					List<BlockPos> emptyPedestals = getEmptyPedestals();
 					getSurroundings();
 					requiredPedestals = Math.max(requiredPedestals, pedestalInputs.size());
-					requiredStability = Math.max(requiredStability, recipe.getInstability()/5);
+					requiredStability = Math.max(requiredStability, recipe.getInstability()*0.2);
 					if(emptyPedestals.size() >= pedestalInputs.size() && stabilityGain > requiredStability) {
 						pedestals.clear();
 						pedestals.addAll(emptyPedestals.subList(0, pedestalInputs.size()));
