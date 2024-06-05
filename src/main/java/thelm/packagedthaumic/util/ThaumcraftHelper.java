@@ -117,17 +117,13 @@ public class ThaumcraftHelper {
 		return true;
 	}
 
-	private static final GameProfile PROFILE = new GameProfile(UUID.fromString("f3d87c7e-4395-4952-88b3-7be346ca6bf4"), "[PkTh]");
 	private static EntityPlayer researchPlayer;
 
 	public EntityPlayer getResearchFakePlayer(World world) {
 		Objects.requireNonNull(world);
 		// Simple research fake player, we don't need this fake player for anything else
 		if(researchPlayer == null) {
-			researchPlayer = new EntityPlayer(world, PROFILE) {
-				@Override public boolean isSpectator() { return false; }
-				@Override public boolean isCreative() { return false; }
-			};
+			researchPlayer = new ResearchFakePlayer(world);
 			IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(researchPlayer);
 			for(ResearchCategory category : ResearchCategories.researchCategories.values()) {
 				for(ResearchEntry entry : category.research.values()) {
@@ -173,5 +169,18 @@ public class ThaumcraftHelper {
 			research = research.substring(0, i);
 		}
 		return research;
+	}
+
+	public static class ResearchFakePlayer extends EntityPlayer {
+
+		private static final GameProfile PROFILE = new GameProfile(UUID.fromString("f3d87c7e-4395-4952-88b3-7be346ca6bf4"), "[PkTh]");
+
+		public ResearchFakePlayer(World world) {
+			super(world, PROFILE);
+		}
+
+		@Override public boolean isCreative() { return false; }
+		@Override public boolean isSpectator() { return false; }
+		@Override public boolean isEntityAlive() { return false; }
 	}
 }
