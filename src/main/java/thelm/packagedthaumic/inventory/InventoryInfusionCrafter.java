@@ -17,6 +17,32 @@ public class InventoryInfusionCrafter extends InventoryTileBase {
 	}
 
 	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		ItemStack ret = super.decrStackSize(index, count);
+		if(index < 2) {
+			syncTile(false);
+		}
+		return ret;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		ItemStack ret = super.removeStackFromSlot(index);
+		if(index < 2) {
+			syncTile(false);
+		}
+		return ret;
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		super.setInventorySlotContents(index, stack);
+		if(index < 2) {
+			syncTile(false);
+		}
+	}
+
+	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if(index == 2) {
 			return stack.hasCapability(CapabilityEnergy.ENERGY, null);

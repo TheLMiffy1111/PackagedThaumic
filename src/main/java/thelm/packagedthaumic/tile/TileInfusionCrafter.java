@@ -295,7 +295,6 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 							setInventorySlotContents(0, pedestalInputs.get(i).copy());
 						}
 						world.playSound(null, pos, SoundsTC.craftstart, SoundCategory.BLOCKS, 0.5F, 1F);
-						syncTile(false);
 						markDirty();
 						return true;
 					}
@@ -407,7 +406,6 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 		//}
 		aspects.aspects.clear();
 		instability = 0;
-		syncTile(false);
 		markDirty();
 	}
 
