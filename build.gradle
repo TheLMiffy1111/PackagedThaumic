@@ -1,5 +1,5 @@
 plugins {
-	id "com.crystaelix.loom" version "jitpack-6453f0f4"
+	id "com.crystaelix.loom" version "jitpack-ae847f1f"
 	id "eclipse"
 	id "idea"
 	id "maven-publish"
@@ -132,8 +132,8 @@ dependencies {
 
 	// Performance
 	implementation("zone.rong:mixinbooter:9.1") {transitive = false}
-	modImplementation "curse.maven:reid-629017:5272391"
-	modImplementation "curse.maven:vintagefix-871198:5348800"
+	modImplementation "curse.maven:reid-629017:5502915"
+	modImplementation "curse.maven:vintagefix-871198:5536276"
 	modImplementation "curse.maven:lolasm-460609:5257348"
 }
 
