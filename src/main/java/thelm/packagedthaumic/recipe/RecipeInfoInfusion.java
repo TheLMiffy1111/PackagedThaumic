@@ -51,15 +51,15 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 		aspects.readFromNBT(nbt, "Aspects");
 		output = new ItemStack(nbt.getCompoundTag("Output"));
 		instability = nbt.getInteger("Instability");
+		List<ItemStack> toCondense = new ArrayList<>(inputPedestal);
+		toCondense.add(inputCenter);
 		if(recipe instanceof InfusionRecipe) {
 			this.recipe = (InfusionRecipe)recipe;
-			List<ItemStack> toCondense = new ArrayList<>(inputPedestal);
-			toCondense.add(inputCenter);
 			toCondense.addAll(ThaumcraftHelper.INSTANCE.makeClathrates(aspects));
-			input.addAll(MiscUtil.condenseStacks(toCondense));
-			for(int i = 0; i*9 < input.size(); ++i) {
-				patterns.add(new PatternHelper(this, i));
-			}
+		}
+		input.addAll(MiscUtil.condenseStacks(toCondense));
+		for(int i = 0; i*9 < input.size(); ++i) {
+			patterns.add(new PatternHelper(this, i));
 		}
 	}
 

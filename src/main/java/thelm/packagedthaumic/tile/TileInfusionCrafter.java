@@ -269,7 +269,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 
 	@Override
 	public boolean acceptPackage(IRecipeInfo recipeInfo, List<ItemStack> stacks, EnumFacing facing) {
-		if(!isBusy() && recipeInfo instanceof IRecipeInfoInfusion) {
+		if(!isBusy() && recipeInfo.isValid() && recipeInfo instanceof IRecipeInfoInfusion) {
 			IRecipeInfoInfusion recipe = (IRecipeInfoInfusion)recipeInfo;
 			if(structureValid) {
 				if(ownerKnowledge != null && ThaumcraftHelper.INSTANCE.knowsResearchStrict(ownerKnowledge, recipe.getResearch())) {

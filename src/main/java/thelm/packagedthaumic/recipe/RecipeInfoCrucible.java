@@ -40,15 +40,16 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 		patterns.clear();
 		IThaumcraftRecipe recipe = ThaumcraftApi.getCraftingRecipes().get(new ResourceLocation(nbt.getString("Recipe")));
 		inputCatalyst = new ItemStack(nbt.getCompoundTag("InputCatalyst"));
+		List<ItemStack> toCondense = new ArrayList<>();
+		toCondense.add(inputCatalyst);
 		if(recipe instanceof CrucibleRecipe) {
 			this.recipe = (CrucibleRecipe)recipe;
-			List<ItemStack> toCondense = new ArrayList<>(ThaumcraftHelper.INSTANCE.makeClathrates(this.recipe.getAspects()));
-			toCondense.add(inputCatalyst);
-			input.addAll(MiscUtil.condenseStacks(toCondense));
+			toCondense.addAll(ThaumcraftHelper.INSTANCE.makeClathrates(this.recipe.getAspects()));
 			output = this.recipe.getRecipeOutput();
-			for(int i = 0; i*9 < input.size(); ++i) {
-				patterns.add(new PatternHelper(this, i));
-			}
+		}
+		input.addAll(MiscUtil.condenseStacks(toCondense));
+		for(int i = 0; i*9 < input.size(); ++i) {
+			patterns.add(new PatternHelper(this, i));
 		}
 	}
 

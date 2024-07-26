@@ -136,7 +136,7 @@ public class TileArcaneCrafter extends TileBase implements ITickable, IPackageCr
 
 	@Override
 	public boolean acceptPackage(IRecipeInfo recipeInfo, List<ItemStack> stacks, EnumFacing facing) {
-		if(!isBusy() && recipeInfo instanceof IRecipeInfoArcane) {
+		if(!isBusy() && recipeInfo.isValid() && recipeInfo instanceof IRecipeInfoArcane) {
 			IRecipeInfoArcane recipe = (IRecipeInfoArcane)recipeInfo;
 			if(ownerKnowledge != null && ownerKnowledge.isResearchKnown(recipe.getResearch())) {
 				requiredVis = Math.max(requiredVis, recipe.getVis());

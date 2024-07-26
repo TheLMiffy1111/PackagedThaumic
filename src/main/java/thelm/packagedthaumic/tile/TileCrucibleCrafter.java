@@ -156,7 +156,7 @@ public class TileCrucibleCrafter extends TileBase implements ITickable, IPackage
 
 	@Override
 	public boolean acceptPackage(IRecipeInfo recipeInfo, List<ItemStack> stacks, EnumFacing facing) {
-		if(!isBusy() && recipeInfo instanceof IRecipeInfoCrucible) {
+		if(!isBusy() && recipeInfo.isValid() && recipeInfo instanceof IRecipeInfoCrucible) {
 			IRecipeInfoCrucible recipe = (IRecipeInfoCrucible)recipeInfo;
 			if(hasCrucible()) {
 				if(ownerKnowledge != null && ThaumcraftHelper.INSTANCE.knowsResearchStrict(ownerKnowledge, recipe.getResearch())) {
