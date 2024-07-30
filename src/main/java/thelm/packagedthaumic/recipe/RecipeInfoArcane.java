@@ -45,14 +45,14 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 		for(int i = 0; i < 15 && i < matrixList.size(); ++i) {
 			matrix.setInventorySlotContents(i, matrixList.get(i));
 		}
-		input.addAll(MiscUtil.condenseStacks(matrix));
-		for(int i = 0; i*9 < input.size(); ++i) {
-			patterns.add(new PatternHelper(this, i));
-		}
 		IRecipe rec = CraftingManager.getRecipe(new ResourceLocation(nbt.getString("Recipe")));
 		if(rec instanceof IArcaneRecipe) {
 			recipe = (IArcaneRecipe)rec;
 			output = recipe.getCraftingResult(matrix).copy();
+		}
+		input.addAll(MiscUtil.condenseStacks(matrix));
+		for(int i = 0; i*9 < input.size(); ++i) {
+			patterns.add(new PatternHelper(this, i));
 		}
 	}
 
