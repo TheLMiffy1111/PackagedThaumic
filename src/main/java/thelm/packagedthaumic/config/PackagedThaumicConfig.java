@@ -80,7 +80,7 @@ public class PackagedThaumicConfig {
 	}
 
 	@SubscribeEvent
-	public void onConfigChanged(OnConfigChangedEvent event) {
+	public static void onConfigChanged(OnConfigChangedEvent event) {
 		if(event.getModID().equals("packagedthaumic")) {
 			init();
 		}
