@@ -325,6 +325,9 @@ public class TileArcaneCrafter extends TileBase implements ITickable, IPackageCr
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		if(hostHelper != null) {
+			hostHelper.readFromNBT(nbt);
+		}
 		super.readFromNBT(nbt);
 		ownerKnowledge.deserializeNBT(nbt.getCompoundTag("OwnerKnowledge"));
 		isWorking = nbt.getBoolean("Working");
@@ -336,9 +339,6 @@ public class TileArcaneCrafter extends TileBase implements ITickable, IPackageCr
 			if(recipe instanceof IRecipeInfoArcane) {
 				currentRecipe = (IRecipeInfoArcane)recipe;
 			}
-		}
-		if(hostHelper != null) {
-			hostHelper.readFromNBT(nbt);
 		}
 	}
 

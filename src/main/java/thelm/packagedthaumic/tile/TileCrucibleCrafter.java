@@ -380,6 +380,9 @@ public class TileCrucibleCrafter extends TileBase implements ITickable, IPackage
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		if(hostHelper != null) {
+			hostHelper.readFromNBT(nbt);
+		}
 		super.readFromNBT(nbt);
 		ownerKnowledge.deserializeNBT(nbt.getCompoundTag("OwnerKnowledge"));
 		isWorking = nbt.getBoolean("Working");
@@ -392,9 +395,6 @@ public class TileCrucibleCrafter extends TileBase implements ITickable, IPackage
 			if(recipe instanceof IRecipeInfoCrucible) {
 				currentRecipe = (IRecipeInfoCrucible)recipe;
 			}
-		}
-		if(hostHelper != null) {
-			hostHelper.readFromNBT(nbt);
 		}
 	}
 

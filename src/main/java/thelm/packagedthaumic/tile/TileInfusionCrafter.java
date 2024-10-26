@@ -754,6 +754,9 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		if(hostHelper != null) {
+			hostHelper.readFromNBT(nbt);
+		}
 		super.readFromNBT(nbt);
 		ownerKnowledge.deserializeNBT(nbt.getCompoundTag("OwnerKnowledge"));
 		remainingProgress = nbt.getInteger("Progress");
@@ -766,9 +769,6 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 			if(recipe instanceof IRecipeInfoInfusion) {
 				currentRecipe = (IRecipeInfoInfusion)recipe;
 			}
-		}
-		if(hostHelper != null) {
-			hostHelper.readFromNBT(nbt);
 		}
 	}
 

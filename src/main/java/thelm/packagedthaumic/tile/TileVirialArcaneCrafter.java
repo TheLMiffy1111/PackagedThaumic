@@ -277,6 +277,9 @@ public class TileVirialArcaneCrafter extends TileBase implements ITickable, IPac
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		if(hostHelper != null) {
+			hostHelper.readFromNBT(nbt);
+		}
 		super.readFromNBT(nbt);
 		ownerKnowledge.deserializeNBT(nbt.getCompoundTag("OwnerKnowledge"));
 		isWorking = nbt.getBoolean("Working");
@@ -289,9 +292,6 @@ public class TileVirialArcaneCrafter extends TileBase implements ITickable, IPac
 			if(recipe instanceof IRecipeInfoArcane) {
 				currentRecipe = (IRecipeInfoArcane)recipe;
 			}
-		}
-		if(hostHelper != null) {
-			hostHelper.readFromNBT(nbt);
 		}
 	}
 

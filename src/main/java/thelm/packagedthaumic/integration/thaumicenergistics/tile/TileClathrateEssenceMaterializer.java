@@ -145,8 +145,8 @@ public class TileClathrateEssenceMaterializer extends TileBase implements ITicka
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
-		super.readFromNBT(nbt);
 		hostHelper.readFromNBT(nbt);
+		super.readFromNBT(nbt);
 	}
 
 	@Override

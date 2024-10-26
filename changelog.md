@@ -1,1 +1,1 @@
-Fix config event listener  
+Fix AE2 grid node data reading  
