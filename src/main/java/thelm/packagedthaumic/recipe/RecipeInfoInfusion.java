@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
@@ -45,7 +44,7 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 		input.clear();
 		output = ItemStack.EMPTY;
 		patterns.clear();
-		IThaumcraftRecipe recipe = ThaumcraftApi.getCraftingRecipes().get(new ResourceLocation(nbt.getString("Recipe")));
+		IThaumcraftRecipe recipe = ThaumcraftApi.getCraftingRecipes().get(ThaumcraftHelper.INSTANCE.getRecipeKey(nbt.getString("Recipe")));
 		inputCenter = new ItemStack(nbt.getCompoundTag("InputCenter"));
 		MiscUtil.loadAllItems(nbt.getTagList("InputPedestal", 10), inputPedestal);
 		aspects.readFromNBT(nbt, "Aspects");

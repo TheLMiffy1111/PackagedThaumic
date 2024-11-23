@@ -11,7 +11,6 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -38,7 +37,7 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 		input.clear();
 		output = ItemStack.EMPTY;
 		patterns.clear();
-		IThaumcraftRecipe recipe = ThaumcraftApi.getCraftingRecipes().get(new ResourceLocation(nbt.getString("Recipe")));
+		IThaumcraftRecipe recipe = ThaumcraftApi.getCraftingRecipes().get(ThaumcraftHelper.INSTANCE.getRecipeKey(nbt.getString("Recipe")));
 		inputCatalyst = new ItemStack(nbt.getCompoundTag("InputCatalyst"));
 		List<ItemStack> toCondense = new ArrayList<>();
 		toCondense.add(inputCatalyst);

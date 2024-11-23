@@ -68,6 +68,11 @@ public class ThaumcraftHelper {
 				map(Map.Entry::getKey).get();
 	}
 
+	public ResourceLocation getRecipeKey(String key) {
+		String[] split = key.split(":", 2);
+		return split.length < 2 ? new ResourceLocation(key) : new ResourceLocation(split[0], split[1]);
+	}
+
 	public boolean knowsResearch(IPlayerKnowledge knowledge, String... research) {
 		for(String r : research) {
 			if(r.contains("&&")) {

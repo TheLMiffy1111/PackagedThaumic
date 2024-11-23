@@ -12,7 +12,6 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
@@ -26,6 +25,7 @@ import thelm.packagedauto.api.IRecipeType;
 import thelm.packagedauto.api.MiscUtil;
 import thelm.packagedauto.container.ContainerEmpty;
 import thelm.packagedauto.util.PatternHelper;
+import thelm.packagedthaumic.util.ThaumcraftHelper;
 
 public class RecipeInfoArcane implements IRecipeInfoArcane {
 
@@ -45,7 +45,7 @@ public class RecipeInfoArcane implements IRecipeInfoArcane {
 		for(int i = 0; i < 15 && i < matrixList.size(); ++i) {
 			matrix.setInventorySlotContents(i, matrixList.get(i));
 		}
-		IRecipe rec = CraftingManager.getRecipe(new ResourceLocation(nbt.getString("Recipe")));
+		IRecipe rec = CraftingManager.getRecipe(ThaumcraftHelper.INSTANCE.getRecipeKey(nbt.getString("Recipe")));
 		if(rec instanceof IArcaneRecipe) {
 			recipe = (IArcaneRecipe)rec;
 			output = recipe.getCraftingResult(matrix).copy();
