@@ -1,1 +1,2 @@
-Workaround the ModTweaker custom recipe key issue  
+Added basic Japanese translation  
+Changed wording of some Thaumonomicon entries  
