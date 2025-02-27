@@ -28,7 +28,7 @@ import thelm.packagedthaumic.inventory.InventoryMarkedPedestal;
 public class TileMarkedPedestal extends TileBase implements ITickable, IGridHost, IActionHost {
 
 	public boolean firstTick = true;
-	
+
 	public TileMarkedPedestal() {
 		setInventory(new InventoryMarkedPedestal(this));
 		if(Loader.isModLoaded("appliedenergistics2")) {

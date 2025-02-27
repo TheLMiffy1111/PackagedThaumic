@@ -33,7 +33,7 @@ public class RecipeTypeInfusion implements IRecipeType {
 	public static final Color COLOR_CENTER = new Color(159, 139, 179);
 	public static final Color COLOR_CRYSTAL = new Color(139, 159, 179);
 	public static final Color COLOR_DISABLED = new Color(64, 64, 64);
-	
+
 	static {
 		SLOTS = new IntRBTreeSet();
 		for(int i = 2; i < 7; ++i) {
@@ -48,7 +48,7 @@ public class RecipeTypeInfusion implements IRecipeType {
 			SLOTS.add(9*i+7);
 		}
 	}
-	
+
 	@Override
 	public ResourceLocation getName() {
 		return NAME;
@@ -63,7 +63,7 @@ public class RecipeTypeInfusion implements IRecipeType {
 	public String getLocalizedNameShort() {
 		return I18n.translateToLocal("recipe.packagedthaumic.infusion.short");
 	}
-	
+
 	@Override
 	public IRecipeInfo getNewRecipeInfo() {
 		return new RecipeInfoInfusion();
@@ -73,12 +73,12 @@ public class RecipeTypeInfusion implements IRecipeType {
 	public IntSet getEnabledSlots() {
 		return SLOTS;
 	}
-	
+
 	@Override
 	public List<String> getJEICategories() {
 		return CATEGORIES;
 	}
-	
+
 	@Optional.Method(modid="jei")
 	@Override
 	public Int2ObjectMap<ItemStack> getRecipeTransferMap(IRecipeLayout recipeLayout, String category) {
@@ -102,7 +102,7 @@ public class RecipeTypeInfusion implements IRecipeType {
 		}
 		return map;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Object getRepresentation() {

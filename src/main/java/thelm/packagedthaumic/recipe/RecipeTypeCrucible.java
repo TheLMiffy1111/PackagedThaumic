@@ -37,12 +37,12 @@ public class RecipeTypeCrucible implements IRecipeType {
 	public static final Color COLOR = new Color(139, 139, 139);
 	public static final Color COLOR_CRYSTAL = new Color(139, 159, 179);
 	public static final Color COLOR_DISABLED = new Color(64, 64, 64);
-	
+
 	static {
 		SLOTS = new IntRBTreeSet();
 		IntStream.range(0, 81).forEachOrdered(SLOTS::add);
 	}
-	
+
 	@Override
 	public ResourceLocation getName() {
 		return NAME;
@@ -57,7 +57,7 @@ public class RecipeTypeCrucible implements IRecipeType {
 	public String getLocalizedNameShort() {
 		return I18n.translateToLocal("recipe.packagedthaumic.crucible.short");
 	}
-	
+
 	@Override
 	public IRecipeInfo getNewRecipeInfo() {
 		return new RecipeInfoCrucible();
@@ -67,12 +67,12 @@ public class RecipeTypeCrucible implements IRecipeType {
 	public IntSet getEnabledSlots() {
 		return SLOTS;
 	}
-	
+
 	@Override
 	public List<String> getJEICategories() {
 		return CATEGORIES;
 	}
-	
+
 	@Optional.Method(modid="jei")
 	@Override
 	public Int2ObjectMap<ItemStack> getRecipeTransferMap(IRecipeLayout recipeLayout, String category) {
@@ -116,7 +116,7 @@ public class RecipeTypeCrucible implements IRecipeType {
 		}
 		return map;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Object getRepresentation() {

@@ -11,7 +11,7 @@ import thelm.packagedauto.api.IRecipeInfo;
 public interface IRecipeInfoCrucible extends IRecipeInfo {
 
 	ItemStack getCatalystInput();
-	
+
 	AspectList getAspects();
 
 	ItemStack getOutput();

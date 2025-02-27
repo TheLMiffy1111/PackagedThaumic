@@ -1,16 +1,26 @@
 plugins {
-	id "com.crystaelix.loom" version "jitpack-ca3766c3"
+	id "com.crystaelix.loom" version "1.10.0"
 	id "eclipse"
 	id "idea"
 	id "maven-publish"
 	id "net.kyori.blossom" version "[1,2)"
-	id "me.modmuss50.mod-publish-plugin" version "0.7.4"
+	id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 }
 
 repositories {
 	mavenCentral()
 	flatDir {
 		dirs "libs"
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.crystaelix.com/releases/"
+			}
+		}
+		filter {
+			includeGroup "thelm.packagedauto"
+		}
 	}
 	exclusiveContent {
 		forRepository {
@@ -41,6 +51,7 @@ repositories {
 		}
 		filter {
 			includeGroup "org.zeith.HammerLib"
+			includeGroup "org.zeith.ThaumicAdditions"
 		}
 	}
 	exclusiveContent {
@@ -65,10 +76,6 @@ repositories {
 	}
 }
 
-sourceSets {
-	main
-}
-
 def mcVersion = "1.12.2"
 def modName = "PackagedThaumic"
 def modId = "packagedthaumic"
@@ -76,12 +83,21 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.2.14"
+version = "1.0.2.15"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
+sourceSets {
+	main {
+		output.resourcesDir = java.destinationDirectory = layout.buildDirectory.dir("outputs/main")
+	}
+}
+
 java {
-	toolchain.languageVersion = JavaLanguageVersion.of(8)
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(8)
+		vendor = JvmVendorSpec.AZUL
+	}
 	withSourcesJar()
 }
 
@@ -91,7 +107,6 @@ tasks.withType(JavaCompile).configureEach {
 
 loom {
 	silentMojangMappingsLicense()
-	interfaceInjection.enableDependencyInterfaceInjection = false
 	runs {
 		configureEach {
 			property "fabric.log.console.level", "debug"
@@ -107,7 +122,7 @@ loom {
 
 dependencies {
 	// Log4j
-	implementation "org.apache.logging.log4j:log4j-core:2.24.1"
+	implementation "org.apache.logging.log4j:log4j-core:2.24.3"
 
 	// Minecraft
 	minecraft "com.mojang:minecraft:1.12.2"
@@ -115,26 +130,26 @@ dependencies {
 	legacyForge "net.minecraftforge:forge:1.12.2-14.23.5.2860"
 
 	// Dependencies
-	modImplementation "curse.maven:packagedauto-308380:6028154"
+	modImplementation "thelm.packagedauto:PackagedAuto-1.12.2:1.0.18.63"
 	modImplementation "curse.maven:baubles-227083:2518667"
 	modImplementation "curse.maven:thaumcraft-223628:2629023"
 	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1013"
 	modImplementation "curse.maven:thaumic-jei-285492:2705304"
 	modImplementation "curse.maven:applied-energistics-2-223794:2747063"
-	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:4513158"
+	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:6321322"
 	modImplementation "vazkii.patchouli:Patchouli:1.0-23.6"
 
 	// Testing
-	modImplementation "org.zeith.HammerLib:HammerLib-1.12.2:12.2.49"
-	modImplementation "curse.maven:thaumic-additions-232564:3663195"
-	modImplementation "MCMultiPart2:MCMultiPart:2.5.3"
+	modImplementation "org.zeith.HammerLib:HammerLib-1.12.2:12.2.58"
+	modImplementation "org.zeith.ThaumicAdditions:ThaumicAdditions-1.12.2:12.7.9"
+	modImplementation "curse.maven:mcmultipart-239431:2615930"
 	modImplementation "curse.maven:mekanism-268560:2835175"
 
 	// Performance
-	implementation("zone.rong:mixinbooter:10.4") {transitive = false}
-	modImplementation "curse.maven:reid-629017:5502915"
-	modImplementation "curse.maven:vintagefix-871198:5536276"
-	modImplementation "curse.maven:lolasm-460609:6115349"
+	implementation("zone.rong:mixinbooter:10.6") {transitive = false}
+	modImplementation "curse.maven:reid-629017:6292779"
+	modImplementation "curse.maven:vintagefix-871198:6412986"
+	modImplementation "curse.maven:lolasm-460609:6333774"
 }
 
 def replacements = [
@@ -171,13 +186,32 @@ sourcesJar {
 	manifest.attributes(manifestAttributes)
 }
 
+publishing {
+	publications {
+		register("mavenJava", MavenPublication) {
+			artifactId = archivesBaseName
+			artifact remapJar
+			artifact sourcesJar
+		}
+	}
+	repositories {
+		if(project.hasProperty("CrystaelixMavenUsername") && project.hasProperty("CrystaelixMavenPassword")) {
+			maven {
+				name = "CrystaelixMaven"
+				url = "https://maven.crystaelix.com/releases/"
+				credentials(PasswordCredentials)
+			}
+		}
+	}
+}
+
 publishMods {
 	file = remapJar.archiveFile
 	version = displayName = "${mcVersion}-${project.version}"
 	changelog = file("changelog.md").text
 	type = BETA
 	modLoaders.add("forge")
-	additionalFiles.from(remapSourcesJar.archiveFile)
+	additionalFiles.from(sourcesJar.archiveFile)
 
 	curseforge {
 		accessToken = providers.gradleProperty("curseforge.token")

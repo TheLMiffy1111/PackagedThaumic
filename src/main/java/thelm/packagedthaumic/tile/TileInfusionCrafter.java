@@ -513,7 +513,7 @@ public class TileInfusionCrafter extends TileBase implements ITickable, IPackage
 	}
 
 	protected void matchStructure() {
-		boolean matches = !requiresPillars || 
+		boolean matches = !requiresPillars ||
 				world.getBlockState(pos.add(-1, -2, -1)).getBlock() instanceof BlockPillar &&
 				world.getBlockState(pos.add(1, -2, -1)).getBlock() instanceof BlockPillar &&
 				world.getBlockState(pos.add(1, -2, 1)).getBlock() instanceof BlockPillar &&
