@@ -94,11 +94,13 @@ public class TileClathrateEssenceMaterializer extends TileBase implements ITicka
 	@Override
 	public List<IMEInventoryHandler> getCellArray(IStorageChannel<?> channel) {
 		if(hostHelper.isActive()) {
-			if(AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class) == channel) {
-				return Collections.singletonList(meInventory.invHandler);
-			}
-			if(AEApi.instance().storage().getStorageChannel(IEssentiaStorageChannel.class) == channel) {
-				return Collections.singletonList(meCraftingInventory.invHandler);
+			if(hostHelper.getNode().getGrid().getMachines(getClass()).size() < 2) {
+				if(AEApi.instance().storage().getStorageChannel(IItemStorageChannel.class) == channel) {
+					return Collections.singletonList(meInventory.invHandler);
+				}
+				if(AEApi.instance().storage().getStorageChannel(IEssentiaStorageChannel.class) == channel) {
+					return Collections.singletonList(meCraftingInventory.invHandler);
+				}
 			}
 		}
 		return Collections.emptyList();

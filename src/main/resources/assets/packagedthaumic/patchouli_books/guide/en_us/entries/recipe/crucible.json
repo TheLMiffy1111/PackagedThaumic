@@ -1,0 +1,13 @@
+{
+	"name": "Crucible",
+	"category": "packagedauto:recipe",
+	"icon": "packagedthaumic:crucible_crafter",
+	"pages": [
+		{
+			"type": "text",
+			"text": "$(thing)Crucible/$ is a crafting recipe type that uses the $(item)Package Thaumatorium/$ to craft recipes craftable in a Crucible.$(p)Refer to the $(item)Thaumonomicon/$ for details."
+		}
+	],
+	"read_by_default": true,
+	"sortnum": 20002
+}

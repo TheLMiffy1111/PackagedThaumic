@@ -1,0 +1,13 @@
+{
+	"name": "§4PackagedThaumic",
+	"category": "packagedauto:recipe",
+	"icon": "packagedthaumic:crucible_crafter",
+	"pages": [
+		{
+			"type": "text",
+			"text": "$(#822)PackagedThaumic/$ adds recipe types for $(#822)Thaumcraft/$ recipes to $(#822)PackagedAuto/$."
+		}
+	],
+	"read_by_default": true,
+	"sortnum": 20000
+}

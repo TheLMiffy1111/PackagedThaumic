@@ -1,0 +1,13 @@
+{
+	"name": "Arcane Crafting",
+	"category": "packagedauto:recipe",
+	"icon": "packagedthaumic:arcane_crafter",
+	"pages": [
+		{
+			"type": "text",
+			"text": "$(thing)Arcane Crafting/$ is a crafting recipe type that uses the $(item)Arcane Package Crafter/$ or the $(item)Virial Arcane Package Crafter/$ to craft recipes craftable in an Arcane Workbench.$(p)Refer to the $(item)Thaumonomicon/$ for details."
+		}
+	],
+	"read_by_default": true,
+	"sortnum": 20001
+}

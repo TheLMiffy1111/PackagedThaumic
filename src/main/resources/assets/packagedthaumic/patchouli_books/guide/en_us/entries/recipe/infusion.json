@@ -1,0 +1,13 @@
+{
+	"name": "Arcane Infusion",
+	"category": "packagedauto:recipe",
+	"icon": "packagedthaumic:infusion_crafter",
+	"pages": [
+		{
+			"type": "text",
+			"text": "$(thing)Arcane Infusion/$ is a crafting recipe type that uses the $(item)Package Runic Matrix/$ to craft recipes craftable with a Runic Matrix.$(p)Refer to the $(item)Thaumonomicon/$ for details."
+		}
+	],
+	"read_by_default": true,
+	"sortnum": 20003
+}

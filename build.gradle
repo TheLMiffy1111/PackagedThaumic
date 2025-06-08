@@ -136,7 +136,7 @@ dependencies {
 	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1013"
 	modImplementation "curse.maven:thaumic-jei-285492:2705304"
 	modImplementation "curse.maven:applied-energistics-2-223794:2747063"
-	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:6321322"
+	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:4513158"
 	modImplementation "vazkii.patchouli:Patchouli:1.0-23.6"
 
 	// Testing
