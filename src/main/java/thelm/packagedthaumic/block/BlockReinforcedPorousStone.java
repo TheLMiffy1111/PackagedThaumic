@@ -27,6 +27,7 @@ public class BlockReinforcedPorousStone extends Block implements IModelRegister 
 	public BlockReinforcedPorousStone() {
 		super(Material.ROCK);
 		setHardness(3F);
+		setResistance(10F);
 		setSoundType(SoundType.STONE);
 		setTranslationKey("packagedthaumic.reinforced_porous_stone");
 		setRegistryName("packagedthaumic:reinforced_porous_stone");

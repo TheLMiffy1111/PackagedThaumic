@@ -27,7 +27,7 @@ public class BlockClathrateEssenceMaterializer extends BlockBase {
 
 	protected BlockClathrateEssenceMaterializer() {
 		super(Material.IRON);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.METAL);
 		setTranslationKey("packagedthaumic.clathrate_essence_materializer");

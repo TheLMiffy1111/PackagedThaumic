@@ -21,6 +21,7 @@ public class BlockVirialChamber extends Block implements IModelRegister {
 	public BlockVirialChamber() {
 		super(Material.ROCK);
 		setHardness(3F);
+		setResistance(10F);
 		setSoundType(SoundType.STONE);
 		setTranslationKey("packagedthaumic.virial_chamber");
 		setRegistryName("packagedthaumic:virial_chamber");

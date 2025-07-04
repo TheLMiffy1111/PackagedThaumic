@@ -36,7 +36,7 @@ public class BlockMarkedPedestal extends BlockBase implements IInfusionStabilise
 
 	public BlockMarkedPedestal(String name) {
 		super(Material.ROCK);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.STONE);
 		setTranslationKey(name.replace(':', '.'));

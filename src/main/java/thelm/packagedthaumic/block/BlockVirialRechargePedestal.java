@@ -27,7 +27,7 @@ public class BlockVirialRechargePedestal extends BlockBase {
 
 	protected BlockVirialRechargePedestal() {
 		super(Material.IRON);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.METAL);
 		setTranslationKey("packagedthaumic.virial_recharge_pedestal");

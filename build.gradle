@@ -83,7 +83,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.2.15"
+version = "1.0.2.16"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
@@ -130,7 +130,7 @@ dependencies {
 	legacyForge "net.minecraftforge:forge:1.12.2-14.23.5.2860"
 
 	// Dependencies
-	modImplementation "thelm.packagedauto:PackagedAuto-1.12.2:1.0.18.63"
+	modImplementation "thelm.packagedauto:PackagedAuto-1.12.2:1.0.18.64"
 	modImplementation "curse.maven:baubles-227083:2518667"
 	modImplementation "curse.maven:thaumcraft-223628:2629023"
 	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1013"
@@ -148,7 +148,7 @@ dependencies {
 	// Performance
 	implementation("zone.rong:mixinbooter:10.6") {transitive = false}
 	modImplementation "curse.maven:reid-629017:6292779"
-	modImplementation "curse.maven:vintagefix-871198:6412986"
+	modImplementation "curse.maven:vintagefix-871198:6609247"
 	modImplementation "curse.maven:lolasm-460609:6333774"
 }
 

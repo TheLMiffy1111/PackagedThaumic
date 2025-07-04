@@ -31,7 +31,7 @@ public class BlockInfusionCrafter extends BlockBase {
 
 	protected BlockInfusionCrafter() {
 		super(Material.IRON);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.STONE);
 		setTranslationKey("packagedthaumic.infusion_crafter");

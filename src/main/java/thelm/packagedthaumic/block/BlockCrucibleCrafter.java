@@ -29,7 +29,7 @@ public class BlockCrucibleCrafter extends BlockBase {
 
 	protected BlockCrucibleCrafter() {
 		super(Material.IRON);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.METAL);
 		setTranslationKey("packagedthaumic.crucible_crafter");

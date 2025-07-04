@@ -29,7 +29,7 @@ public class BlockArcaneCrafter extends BlockBase {
 
 	protected BlockArcaneCrafter() {
 		super(Material.IRON);
-		setHardness(15F);
+		setHardness(10F);
 		setResistance(25F);
 		setSoundType(SoundType.METAL);
 		setTranslationKey("packagedthaumic.arcane_crafter");
