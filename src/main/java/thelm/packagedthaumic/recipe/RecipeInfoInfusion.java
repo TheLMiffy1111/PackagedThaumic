@@ -229,7 +229,7 @@ public class RecipeInfoInfusion implements IRecipeInfoInfusion {
 	public Int2ObjectMap<ItemStack> getEncoderStacks() {
 		Int2ObjectMap<ItemStack> map = new Int2ObjectOpenHashMap<>();
 		int[] slotArray = RecipeTypeInfusion.SLOTS.toIntArray();
-		ArrayUtils.remove(slotArray, 18);
+		slotArray = ArrayUtils.remove(slotArray, 18);
 		map.put(40, inputCenter);
 		for(int i = 0; i < inputPedestal.size(); ++i) {
 			map.put(slotArray[i], inputPedestal.get(i));

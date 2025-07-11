@@ -190,7 +190,7 @@ public class RecipeInfoCrucible implements IRecipeInfoCrucible {
 	public Int2ObjectMap<ItemStack> getEncoderStacks() {
 		Int2ObjectMap<ItemStack> map = new Int2ObjectOpenHashMap<>();
 		int[] slotArray = RecipeTypeCrucible.SLOTS.toIntArray();
-		ArrayUtils.remove(slotArray, 40);
+		slotArray = ArrayUtils.remove(slotArray, 40);
 		map.put(40, inputCatalyst);
 		List<ItemStack> crystals = ThaumcraftHelper.INSTANCE.makeClathrates(recipe.getAspects());
 		for(int i = 0; i < crystals.size(); ++i) {
