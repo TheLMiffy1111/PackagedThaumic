@@ -83,7 +83,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.2.18"
+version = "1.0.3.19"
 
 archivesBaseName = "${modName}-${mcVersion}"
 
@@ -130,7 +130,7 @@ dependencies {
 	legacyForge "net.minecraftforge:forge:1.12.2-14.23.5.2860"
 
 	// Dependencies
-	modImplementation "thelm.packagedauto:PackagedAuto-1.12.2:1.0.19.66"
+	modImplementation "thelm.packagedauto:PackagedAuto-1.12.2:1.0.20.67"
 	modImplementation "curse.maven:baubles-227083:2518667"
 	modImplementation "curse.maven:thaumcraft-223628:2629023"
 	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1013"

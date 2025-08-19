@@ -1,4 +1,4 @@
-package thelm.packagedthaumic.proxy;
+package thelm.packagedthaumic.event;
 
 import java.util.function.Supplier;
 
@@ -60,7 +60,7 @@ import thelm.packagedthaumic.tile.TileMarkedPedestal;
 import thelm.packagedthaumic.tile.TileVirialArcaneCrafter;
 import thelm.packagedthaumic.tile.TileVirialRechargePedestal;
 
-public class CommonProxy {
+public class CommonEventHandler {
 
 	public void registerBlock(Block block) {
 		ForgeRegistries.BLOCKS.register(block);
@@ -70,18 +70,16 @@ public class CommonProxy {
 		ForgeRegistries.ITEMS.register(item);
 	}
 
-	public void register(FMLPreInitializationEvent event) {
+	public void onPreInit(FMLPreInitializationEvent event) {
 		registerConfig(event);
 		registerBlocks();
 		registerItems();
-		registerModels();
 		registerTileEntities();
 		registerRecipeTypes();
 		registerNetwork();
 	}
 
-	public void register(FMLInitializationEvent event) {
-		registerColors();
+	public void onInit(FMLInitializationEvent event) {
 		registerResearch();
 		registerRecipes();
 	}
@@ -134,7 +132,6 @@ public class CommonProxy {
 		registerItem(ItemClathrateEssence.INSTANCE);
 	}
 
-	protected void registerModels() {}
 
 	protected void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileClathrateEssenceFormer.class, new ResourceLocation("packagedthaumic:clathrate_essence_former"));
@@ -161,8 +158,6 @@ public class CommonProxy {
 	protected void registerNetwork() {
 		PacketHandler.registerPackets();
 	}
-
-	protected void registerColors() {}
 
 	protected void registerResearch() {
 		ResearchCategories.registerCategory("PACKAGEDTHAUMIC", "f_MODPACKAGEDAUTO",
