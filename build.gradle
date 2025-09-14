@@ -83,7 +83,7 @@ def specVersion = "1"
 def vendor = "thelm"
 
 group = "thelm.packagedthaumic"
-version = "1.0.3.19"
+version = "1.0.3.20"
 
 def archivesName = "${modName}-${mcVersion}"
 base.archivesName = archivesName
