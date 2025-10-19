@@ -4,7 +4,7 @@ plugins {
 	id "idea"
 	id "maven-publish"
 	id "com.crystaelix.blossom" version "1.3.2"
-	id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+	id "me.modmuss50.mod-publish-plugin" version "1.0.0"
 }
 
 repositories {
@@ -135,7 +135,7 @@ dependencies {
 	modImplementation "curse.maven:baubles-227083:2518667"
 	modImplementation "curse.maven:thaumcraft-223628:2629023"
 	modImplementation "mezz.jei:jei_1.12.2:4.16.1.1013"
-	modImplementation "curse.maven:thaumic-jei-285492:2705304"
+	modImplementation "curse.maven:thaumic-jei-285492:5646810"
 	modImplementation "curse.maven:applied-energistics-2-223794:2747063"
 	modImplementation "curse.maven:thaumic-energistics-extended-life-849094:4513158"
 	modImplementation "vazkii.patchouli:Patchouli:1.0-23.6"
@@ -147,8 +147,8 @@ dependencies {
 	modImplementation "curse.maven:mekanism-268560:2835175"
 
 	// Performance
-	implementation("zone.rong:mixinbooter:10.6") {transitive = false}
-	modImplementation "curse.maven:reid-629017:6292779"
+	implementation("zone.rong:mixinbooter:10.7") {transitive = false}
+	modImplementation "curse.maven:reid-629017:6761278"
 	modImplementation "curse.maven:vintagefix-871198:6609247"
 	modImplementation "curse.maven:lolasm-460609:6333774"
 }
