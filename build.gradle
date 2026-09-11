@@ -1,10 +1,10 @@
 plugins {
-	id "com.crystaelix.loom" version "1.13-SNAPSHOT"
+	id "com.crystaelix.loom" version "1.17-SNAPSHOT"
 	id "eclipse"
 	id "idea"
 	id "maven-publish"
 	id "com.crystaelix.blossom" version "1.3.2"
-	id "me.modmuss50.mod-publish-plugin" version "2.1.1"
+	id "me.modmuss50.mod-publish-plugin" version "2.2.0"
 }
 
 repositories {
@@ -137,7 +137,7 @@ dependencies {
 	modImplementation "vazkii.patchouli:Patchouli:1.0-23.6"
 
 	// Testing
-	modImplementation "org.zeith.HammerLib:HammerLib-1.12.2:12.2.65"
+	modImplementation "org.zeith.HammerLib:HammerLib-1.12.2:12.2.66"
 	modImplementation "org.zeith.ThaumicAdditions:ThaumicAdditions-1.12.2:12.7.9"
 	modImplementation "curse.maven:mcmultipart-239431:2615930"
 	modImplementation "curse.maven:mekanism-268560:2835175"
@@ -224,6 +224,7 @@ publishMods {
 		accessToken = providers.gradleProperty("modrinth.token")
 		projectId = "qjnayfYX"
 		minecraftVersions.add(mcVersion)
+		environment = CLIENT_AND_SERVER
 		requires "packagedauto"
 		optional "ae2"
 	}
